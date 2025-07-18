@@ -69,11 +69,8 @@ jobs:
       run: |
         echo "开始构建文档..."
         
-        # 首先尝试严格模式，如果失败则使用普通模式
-        if ! mkdocs build --clean --strict; then
-          echo "⚠️ 严格模式构建失败，使用普通模式重新构建..."
-          mkdocs build --clean
-        fi
+        # 使用普通模式构建文档
+        mkdocs build --clean
         
         # 创建 .nojekyll 文件以禁用 Jekyll 处理
         touch site/.nojekyll
@@ -89,13 +86,11 @@ jobs:
         path: ./site
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     
     steps:
     - name: 🚀 部署到 GitHub Pages
+      if: github.ref == 'refs/heads/translate/zh'
       id: deployment
       uses: actions/deploy-pages@v4 
