@@ -50,8 +50,8 @@ jobs:
     
     - name: 🏗️ 安装项目依赖
       run: |
-        # 安装基础依赖
-        uv pip install --system -r pyproject.toml --extra docs
+        # 安装基础依赖和文档依赖
+        uv pip install --system -e . --group docs
         
         # 尝试安装 mkdocs-material-insiders（如果有权限）
         if [ "${{ steps.mkdocs_token.outcome }}" = "success" ]; then
