@@ -1,54 +1,46 @@
-# heatmap and tracking
+# 热力图（heatmap）与追踪（tracking）
 
-## 👋 hello
+## 👋 你好
 
-This script performs heatmap and tracking analysis using YOLOv8, an object-detection method and
-ByteTrack, a simple yet effective online multi-object tracking method. It uses the
-supervision package for multiple tasks such as drawing heatmap annotations, tracking objects, etc.
+该脚本利用 YOLOv8（一种目标检测方法）和 ByteTrack（一种简单但有效的在线多目标追踪方法）来进行热力图和追踪分析。它使用了 `supervision` 包来执行多项任务，例如绘制热力图标注、追踪目标等。
 
-## 💻 install
+## 💻 安装
 
-- clone repository and navigate to example directory
+- 克隆仓库并导航到示例目录
 
     ```bash
     git clone --depth 1 -b develop https://github.com/roboflow/supervision.git
     cd supervision/examples/heatmap_and_track
     ```
 
-- setup python environment and activate it \[optional\]
+- 设置 Python 环境并激活它（可选）
 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-- install required dependencies
+- 安装所需的依赖项
 
     ```bash
     pip install -r requirements.txt
     ```
 
-## 🛠️ script arguments
+## 🛠️ 脚本参数
 
-- `--source_weights_path`: Required. Specifies the path to the weights file for the
-    YOLO model. This file contains the trained model data necessary for object detection.
-- `--source_video_path` (optional): The path to the source video file that will be
-    analyzed. This is the input video on which crowd analysis will be performed.
-    If not specified default is `people-walking.mp4` from supervision assets
-- `--target_video_path` (optional): The path to save the output.mp4 video with annotations.
-- `--confidence_threshold` (optional): Sets the confidence threshold for the YOLO model
-    to filter detections. Default is `0.3`. This determines how confident the model should
-    be to recognize an object in the video.
-- `--iou_threshold` (optional): Specifies the IOU (Intersection Over Union) threshold
-    for the model. Default is 0.7. This value is used to manage object detection accuracy,
-    particularly in distinguishing between different objects.
-- `--heatmap_alpha` (optional): Opacity of the overlay mask, between 0 and 1.
-- `--radius` (optional): Radius of the heat circle.
-- `--track_threshold` (optional): Detection confidence threshold for track activation.
-- `--track_seconds` (optional): Number of seconds to buffer when a track is lost.
-- `--match_threshold` (optional): Threshold for matching tracks with detections.
+- `--source_weights_path`：必需。指定 YOLO 模型权重的路径。此文件包含目标检测所需的已训练模型数据。
+- `--source_video_path`（可选）：将被分析的源视频文件的路径。这是将执行人群分析的输入视频。
+    如果未指定，则默认为 `supervision` 资源中的 `people-walking.mp4`。
+- `--target_video_path`（可选）：保存带标注的输出 `.mp4` 视频的路径。
+- `--confidence_threshold`（可选）：设置 YOLO 模型的置信度阈值以过滤检测结果。默认为 `0.3`。这决定了模型识别视频中对象的置信度。
+- `--iou_threshold`（可选）：指定模型的 IOU（交并比）阈值。默认为 0.7。该值用于管理目标检测的准确性，特别是在区分不同对象时。
+- `--heatmap_alpha`（可选）：叠加蒙版的透明度，介于 0 和 1 之间。
+- `--radius`（可选）：热力圆的半径。
+- `--track_threshold`（可选）：用于激活追踪的检测置信度阈值。
+- `--track_seconds`（可选）：丢失追踪时要缓冲的秒数。
+- `--match_threshold`（可选）：用于将追踪与检测匹配的阈值。
 
-## ⚙️ run
+## ⚙️ 运行
 
 ```bash
 python script.py \
@@ -59,16 +51,11 @@ python script.py \
     --target_video_path  output_video.mp4
 ```
 
-## © license
+## © 版权
 
-This demo integrates two main components, each with its own licensing:
+此演示集成了两个主要组件，每个组件都有其自己的许可：
 
-- ultralytics: The object detection model used in this demo, YOLOv8, is distributed
-    under the [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
-    You can find more details about this license here.
+- ultralytics：此演示中使用的目标检测模型 YOLOv8，在 [AGPL-3.0 许可](https://github.com/ultralytics/ultralytics/blob/main/LICENSE)下分发。
+    您可以在此处找到有关此许可的更多详细信息。
 
-- supervision: The analytics code that powers the zone-based analysis in this demo is
-    based on the Supervision library, which is licensed under the
-    [MIT license](https://github.com/roboflow/supervision/blob/develop/LICENSE.md). This
-    makes the Supervision part of the code fully open source and freely usable in your
-    projects.
+- supervision：为演示中的基于区域的分析提供支持的分析代码基于 Supervision 库，该库在 [MIT 许可](https://github.com/roboflow/supervision/blob/develop/LICENSE.md)下获得许可。这使得 Supervision 部分的代码完全开源，并且可以在您的项目中使用。

@@ -2,6 +2,6 @@
 comments: true
 ---
 
-# Classifications
+# 分类
 
 :::supervision.classification.core.Classifications

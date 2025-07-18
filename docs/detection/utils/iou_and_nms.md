@@ -3,7 +3,7 @@ comments: true
 status: new
 ---
 
-# IoU and NMS Utils
+# IoU 和 NMS 工具
 
 <div class="md-typeset">
   <h2><a href="#supervision.detection.utils.iou_and_nms.OverlapFilter">OverlapFilter</a></h2>

@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Annotators
+# 标注器 (Annotators)
 
 === "VertexAnnotator"
 

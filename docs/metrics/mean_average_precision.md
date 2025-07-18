@@ -3,7 +3,7 @@ comments: true
 status: new
 ---
 
-# Mean Average Precision
+# 平均精确率（Mean Average Precision）
 
 <div class="md-typeset">
     <h2><a href="#supervision.metrics.mean_average_precision.MeanAveragePrecision">MeanAveragePrecision</a></h2>

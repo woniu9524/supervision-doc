@@ -2,6 +2,6 @@
 comments: true
 ---
 
-# Detection Smoother
+# 检测平滑器
 
 :::supervision.detection.tools.smoother.DetectionsSmoother

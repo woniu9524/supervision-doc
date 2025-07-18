@@ -3,6 +3,6 @@ comments: true
 status: new
 ---
 
-# Keypoint Detection
+# 关键点检测
 
 :::supervision.keypoint.core.KeyPoints

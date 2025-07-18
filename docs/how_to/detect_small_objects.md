@@ -2,22 +2,20 @@
 comments: true
 ---
 
-# Detect Small Objects
+# 检测小目标
 
-This guide shows how to detect small objects
-with the [Inference](https://github.com/roboflow/inference),
-[Ultralytics](https://github.com/ultralytics/ultralytics) or
-[Transformers](https://github.com/huggingface/transformers) packages using
-[`InferenceSlicer`](/latest/detection/tools/inference_slicer/#supervision.detection.tools.inference_slicer.InferenceSlicer).
+本指南将展示如何使用 [`InferenceSlicer`](/latest/detection/tools/inference_slicer/#supervision.detection.tools.inference_slicer.InferenceSlicer)
+在 [`Inference`](https://github.com/roboflow/inference),
+[`Ultralytics`](https://github.com/ultralytics/ultralytics) 或
+[`Transformers`](https://github.com/huggingface/transformers) 包中检测小目标。
 
 <video controls>
     <source src="https://media.roboflow.com/supervision_detect_small_objects_example.mp4" type="video/mp4">
 </video>
 
-## Baseline Detection
+## 基线检测
 
-Small object detection in high-resolution images presents challenges due to the objects'
-size relative to the image resolution.
+高分辨率图像中的小目标检测由于目标相对于图像分辨率的大小而带来挑战。
 
 === "Inference"
     ```python
@@ -98,11 +96,9 @@ size relative to the image resolution.
 
 ![basic-detection](https://media.roboflow.com/supervision_detect_small_objects_example_1.png)
 
-## Input Resolution
+## 输入分辨率
 
-Modifying the input resolution of images before detection can enhance small object
-identification at the cost of processing speed and increased memory usage. This method
-is less effective for ultra-high-resolution images (4K and above).
+在检测前修改图像的输入分辨率可以提高小目标的识别能力，但会以牺牲处理速度和增加内存使用为代价。对于超高分辨率图像（4K 及以上），此方法效果较差。
 
 === "Inference"
     ```{ .py hl_lines="5" }
@@ -149,8 +145,7 @@ is less effective for ultra-high-resolution images (4K and above).
 ## Inference Slicer
 
 [`InferenceSlicer`](/latest/detection/tools/inference_slicer/#supervision.detection.tools.inference_slicer.InferenceSlicer)
-processes high-resolution images by dividing them into smaller segments, detecting
-objects within each, and aggregating the results.
+通过将高分辨率图像分割成更小的块、对每个块进行检测然后聚合结果来处理高分辨率图像。
 
 <video controls>
     <source src="https://media.roboflow.com/supervision_detect_small_objects_example_2.mp4" type="video/mp4">
@@ -256,9 +251,9 @@ objects within each, and aggregating the results.
 
 ![detection-with-inference-slicer](https://media.roboflow.com/supervision_detect_small_objects_example_3.png)
 
-## Small Object Segmentation
+## 小目标分割
 
-[`InferenceSlicer`](/latest/detection/tools/inference_slicer/#supervision.detection.tools.inference_slicer.InferenceSlicer) can perform segmentation tasks too.
+[`InferenceSlicer`](/latest/detection/tools/inference_slicer/#supervision.detection.tools.inference_slicer.InferenceSlicer) 也可以执行分割任务。
 
 === "Inference"
     ```{ .py hl_lines="6 16 19-20" }

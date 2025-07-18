@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Mean Average Recall
+# 平均召回率
 
 <div class="md-typeset">
     <h2><a href="#supervision.metrics.mean_average_recall.MeanAverageRecall">MeanAverageRecall</a></h2>

@@ -3,9 +3,9 @@ comments: true
 status: new
 ---
 
-# Annotators
+# 标注器
 
-Annotators accept detections and apply box or mask visualizations to the detections. Annotators have many available styles.
+标注器用于接受检测结果，并将边界框或掩码可视化地应用于检测结果。标注器有多种可用的样式。
 
 === "Box"
 
@@ -524,11 +524,11 @@ Annotators accept detections and apply box or mask visualizations to the detecti
     </div>
 
 <div class="md-typeset">
-    <h2>Try Supervision Annotators on your own image</h2>
-    Visualize annotators on images with COCO classes such as people, vehicles, animals, household items.
+    <h2>在您自己的图像上试用 Supervision 标注器</h2>
+    使用 COCO 数据集中常见的类别（如人物、车辆、动物、家居用品）的图像来可视化标注器。
 </div>
 
-<div style="height: 400px; width: 100%; border-radius: 8px; overflow: hidden;"><iframe src="https://app.roboflow.com/workflows/embed/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3b3JrZmxvd0lkIjoiNDdtd2xuWW16S25VNWtOYUZjMG8iLCJ3b3Jrc3BhY2VJZCI6ImtyT1RBYm5jRmhvUU1DZExPbGU0IiwidXNlcklkIjoiRVJNUFBZY3FQMmZWWjB1NkRpNXZaYXJDdlZPMiIsImlhdCI6MTcyNjgzOTM2N30.gj2F6SnmmURAScJe4PTC1raUXsAK5mZyrUIGIJ44NhM?hideToolbar=true&hideHeader=true&defaultVisual=true" loading="lazy" title="Roboflow Workflow for Supervision Annotators" style="width: 100%; height: 100%; min-height: 400px; border: none;"></iframe></div>
+<div style="height: 400px; width: 100%; border-radius: 8px; overflow: hidden;"><iframe src="https://app.roboflow.com/workflows/embed/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3b3JrZmxvd0lkIjoiNDdtd2xuWW16S25VNWtOYUZjMG8iLCJ3b3Jrc3BhY2VJZCI6ImtyT1RBYm5jRmhvUU1DZExPbGU0IiwidXNlcklkIjoiRVJNUFBZY3FQMmZWWjB1NkRpNXZaYXJDdlpPMiIsImlhdCI6MTcyNjgzOTM2N30.gj2F6SnmmURAScJe4PTC1raUXsAK5mZyrUIGIJ44NhM?hideToolbar=true&hideHeader=true&defaultVisual=true" loading="lazy" title="Roboflow Workflow for Supervision Annotators" style="width: 100%; height: 100%; min-height: 400px; border: none;"></iframe></div>
 
 <div class="md-typeset">
     <h2><a href="#supervision.annotators.core.BoxAnnotator">BoxAnnotator</a></h2>
@@ -669,7 +669,7 @@ Annotators accept detections and apply box or mask visualizations to the detecti
 :::supervision.annotators.core.ComparisonAnnotator
 
 <div class="md-typeset">
-    <h2><a href="#supervision.annotators.core.ColorLookup">ColorLookup</a></h2>
+    <h2><a href="#supervision.annotators.utils.ColorLookup">ColorLookup</a></h2>
 </div>
 
 :::supervision.annotators.utils.ColorLookup

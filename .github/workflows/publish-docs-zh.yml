@@ -1,0 +1,94 @@
+name: 部署中文文档到 GitHub Pages
+
+on:
+  push:
+    branches: [ translate/zh ]
+  
+  # 允许手动触发workflow
+  workflow_dispatch:
+
+# 设置GITHUB_TOKEN权限以允许部署到GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署，跳过正在运行的队列中的运行
+concurrency:
+  group: "pages-zh"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 检出代码
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: 🐍 设置 Python 环境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: 📦 安装 uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+    
+    - name: 🔑 创建 GitHub App token (mkdocs)
+      id: mkdocs_token
+      uses: actions/create-github-app-token@v1.10.4
+      with:
+        app-id: ${{ secrets.MKDOCS_APP_ID }}
+        private-key: ${{ secrets.MKDOCS_PEM }}
+        owner: roboflow
+        repositories: mkdocs-material-insiders
+      continue-on-error: true
+    
+    - name: 🏗️ 安装项目依赖
+      run: |
+        # 安装基础依赖
+        uv pip install --system -r pyproject.toml --extra docs
+        
+        # 尝试安装 mkdocs-material-insiders（如果有权限）
+        if [ "${{ steps.mkdocs_token.outcome }}" = "success" ]; then
+          echo "安装 mkdocs-material-insiders..."
+          uv pip install --system "git+https://roboflow:${{ steps.mkdocs_token.outputs.token }}@github.com/roboflow/mkdocs-material-insiders.git@9.5.49-insiders-4.53.14#egg=mkdocs-material[imaging]"
+        else
+          echo "使用公开版本的 mkdocs-material..."
+          uv pip install --system "mkdocs-material[imaging]>=9.5.5"
+        fi
+    
+    - name: ⚙️ 配置 git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    
+    - name: 🏗️ 构建文档
+      env:
+        MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "开始构建文档..."
+        mkdocs build --clean --strict
+        
+        # 创建 .nojekyll 文件以禁用 Jekyll 处理
+        touch site/.nojekyll
+        
+        # 如果需要自定义域名，取消注释下面一行
+        # echo "your-custom-domain.com" > site/CNAME
+        
+        echo "文档构建完成！"
+    
+    - name: 🚀 部署到 GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+        publish_branch: gh-pages-zh
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: '部署中文文档 ${{ github.sha }}' 

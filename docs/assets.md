@@ -2,10 +2,10 @@
 comments: true
 ---
 
-# Assets
+# 资源
 
-Supervision offers an assets download utility that allows you to download video files
-that you can use in your demos.
+Supervision 提供了一个资源下载工具，允许你下载视频文件，
+这些文件可用于你的演示。
 
 <div class="md-typeset">
     <h2><a href="#supervision.assets.downloader.download_assets.download_assets">download_assets</a></h2>

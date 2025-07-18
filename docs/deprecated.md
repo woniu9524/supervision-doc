@@ -3,42 +3,42 @@ comments: true
 status: deprecated
 ---
 
-# Deprecated
+# 已弃用
 
-These features are phased out due to better alternatives or potential issues in future versions. Deprecated functionalities are supported for **five subsequent releases**, providing time for users to transition to updated methods.
+这些功能已被淘汰，原因是存在更好的替代方案或在未来版本中可能出现问题。已弃用功能的有效期为**五个后续版本**，以便用户有时间过渡到更新的方法。
 
 
-- `overlap_filter_strategy` in [`InferenceSlicer.__init__`](https://supervision.roboflow.com/latest/detection/tools/inference_slicer/) is deprecated and will be removed in `supervision-0.27.0`. Use `overlap_strategy` instead.
-- `overlap_ratio_wh` in [`InferenceSlicer.__init__`](https://supervision.roboflow.com/latest/detection/tools/inference_slicer/) is deprecated and will be removed in `supervision-0.27.0`. Use `overlap_wh` instead.
-- `sv.LMM` enum is deprecated and will be removed in `supervision-0.31.0`. Use `sv.VLM` instead.
-- [`sv.Detections.from_lmm`](https://supervision.roboflow.com/0.26.0/detection/core/#supervision.detection.core.Detections.from_lmm) property is deprecated and will be removed in `supervision-0.31.0`. Use [`sv.Detections.from_vlm`](https://supervision.roboflow.com/0.26.0/detection/core/#supervision.detection.core.Detections.from_vlm) instead.
+- `InferenceSlicer.__init__` 中的 `overlap_filter_strategy` 在 [`InferenceSlicer.__init__`](https://supervision.roboflow.com/latest/detection/tools/inference_slicer/) 已弃用，并将在 `supervision-0.27.0` 中移除。请使用 `overlap_strategy`。
+- `InferenceSlicer.__init__` 中的 `overlap_ratio_wh` 在 [`InferenceSlicer.__init__`](https://supervision.roboflow.com/latest/detection/tools/inference_slicer/) 已弃用，并将在 `supervision-0.27.0` 中移除。请使用 `overlap_wh`。
+- `sv.LMM` 枚举已弃用，并将在 `supervision-0.31.0` 中移除。请使用 `sv.VLM`。
+- [`sv.Detections.from_lmm`](https://supervision.roboflow.com/0.26.0/detection/core/#supervision.detection.core.Detections.from_lmm) 属性已弃用，并将在 `supervision-0.31.0` 中移除。请使用 [`sv.Detections.from_vlm`](https://supervision.roboflow.com/0.26.0/detection/core/#supervision.detection.core.Detections.from_vlm)。
 
-# Removed
+# 已移除
 
 ### 0.26.0
 
-- The `sv.DetectionDataset.images` property has been removed in `supervision-0.26.0`. Please loop over images with `for path, image, annotation in dataset:`, as that does not require loading all images into memory. Also, constructing `sv.DetectionDataset` with parameter `images` as `Dict[str, np.ndarray]` is deprecated and has been removed in `supervision-0.26.0`. Please pass a list of paths `List[str]` instead.
-- The name `sv.BoundingBoxAnnotator` is deprecated and has been removed in `supervision-0.26.0`. It has been renamed to [`sv.BoxAnnotator`](https://supervision.roboflow.com/0.22.0/detection/annotators/#supervision.annotators.core.BoxAnnotator).
+- `supervision-0.26.0` 中的 `sv.DetectionDataset.images` 属性已被移除。请使用 `for path, image, annotation in dataset:` 循环遍历图像，这样无需将所有图像加载到内存中。此外，使用 `images` 参数（类型为 `Dict[str, np.ndarray]`）构建 `sv.DetectionDataset` 已弃用并在 `supervision-0.26.0` 中被移除。请改用路径列表 `List[str]`。
+- `sv.BoundingBoxAnnotator` 的名称已弃用并在 `supervision-0.26.0` 中被移除。它已重命名为 [`sv.BoxAnnotator`](https://supervision.roboflow.com/0.22.0/detection/annotators/#supervision.annotators.core.BoxAnnotator)。
 
 
 ### 0.24.0
 
-- The `frame_resolution_wh ` parameter in [`sv.PolygonZone`](detection/tools/polygon_zone.md/#supervision.detection.tools.polygon_zone.PolygonZone) has been removed.
-- Supervision installation methods `"headless"` and `"desktop"` were removed, as they are no longer needed. `pip install supervision[headless]` will install the base library and harmlessly warn of non-existent extras.
+- [`sv.PolygonZone`](detection/tools/polygon_zone.md/#supervision.detection.tools.polygon_zone.PolygonZone) 中的 `frame_resolution_wh ` 参数已被移除。
+- Supervision 的安装方法 `"headless"` 和 `"desktop"` 已移除，因为它们不再需要。`pip install supervision[headless]` 将安装基础库，并发出关于不存在的额外组件的无害警告。
 
 ### 0.23.0
 
-- The `track_buffer`, `track_thresh`, and `match_thresh` parameters in [`ByteTrack`](trackers.md/#supervision.tracker.byte_tracker.core.ByteTrack) are deprecated and were removed as of `supervision-0.23.0`. Use `lost_track_buffer,` `track_activation_threshold`, and `minimum_matching_threshold` instead.
-- The `triggering_position ` parameter in [`sv.PolygonZone`](detection/tools/polygon_zone.md/#supervision.detection.tools.polygon_zone.PolygonZone) was removed as of `supervision-0.23.0`. Use `triggering_anchors` instead.
+- [`ByteTrack`](trackers.md/#supervision.tracker.byte_tracker.core.ByteTrack) 中的 `track_buffer`、`track_thresh` 和 `match_thresh` 参数已弃用，并自 `supervision-0.23.0` 起移除。请使用 `lost_track_buffer`、`track_activation_threshold` 和 `minimum_matching_threshold`。
+- [`sv.PolygonZone`](detection/tools/polygon_zone.md/#supervision.detection.tools.polygon_zone.PolygonZone) 中的 `triggering_position ` 参数已自 `supervision-0.23.0` 起移除。请使用 `triggering_anchors`。
 
 ### 0.22.0
 
-- `sv.Detections.from_roboflow` is removed as of `supervision-0.22.0`. Use [`Detections.from_inference`](detection/core.md/#supervision.detection.core.Detections.from_inference) instead.
-- The method `sv.Color.white()` was removed as of `supervision-0.22.0`. Use the constant `sv.Color.WHITE` instead.
-- The method `sv.Color.black()` was removed as of `supervision-0.22.0`. Use the constant `sv.Color.BLACK` instead.
-- The method `sv.Color.red()` was removed as of `supervision-0.22.0`. Use the constant `sv.Color.RED` instead.
-- The method `sv.Color.green()` was removed as of `supervision-0.22.0`. Use the constant `sv.Color.GREEN` instead.
-- The method `sv.Color.blue()` was removed as of `supervision-0.22.0`. Use the constant `sv.Color.BLUE` instead.
-- The method `sv.ColorPalette.default()` was removed as of `supervision-0.22.0`. Use the constant [`ColorPalette.DEFAULT`](/utils/draw/#supervision.draw.color.ColorPalette.DEFAULT) instead.
-- `sv.BoxAnnotator` was removed as of `supervision-0.22.0`, however `sv.BoundingBoxAnnotator` was immediately renamed to `sv.BoxAnnotator`. Use [`BoxAnnotator`](detection/annotators.md/#supervision.annotators.core.BoxAnnotator) and [`LabelAnnotator`](detection/annotators.md/#supervision.annotators.core.LabelAnnotator) instead of the old `sv.BoxAnnotator`.
-- The method `sv.FPSMonitor.__call__` was removed as of `supervision-0.22.0`. Use the attribute [`sv.FPSMonitor.fps`](utils/video.md/#supervision.utils.video.FPSMonitor.fps) instead.
+- `supervision-0.22.0` 起已移除 `sv.Detections.from_roboflow`。请使用 [`Detections.from_inference`](detection/core.md/#supervision.detection.core.Detections.from_inference)。
+- `supervision-0.22.0` 起已移除 `sv.Color.white()` 方法。请使用常量 `sv.Color.WHITE`。
+- `supervision-0.22.0` 起已移除 `sv.Color.black()` 方法。请使用常量 `sv.Color.BLACK`。
+- `supervision-0.22.0` 起已移除 `sv.Color.red()` 方法。请使用常量 `sv.Color.RED`。
+- `supervision-0.22.0` 起已移除 `sv.Color.green()` 方法。请使用常量 `sv.Color.GREEN`。
+- `supervision-0.22.0` 起已移除 `sv.Color.blue()` 方法。请使用常量 `sv.Color.BLUE`。
+- `supervision-0.22.0` 起已移除 `sv.ColorPalette.default()` 方法。请使用常量 [`ColorPalette.DEFAULT`](/utils/draw/#supervision.draw.color.ColorPalette.DEFAULT)。
+- `supervision-0.22.0` 时已移除 `sv.BoxAnnotator`，但 `sv.BoundingBoxAnnotator` 已立即更名为 `sv.BoxAnnotator`。请使用 [`BoxAnnotator`](detection/annotators.md/#supervision.annotators.core.BoxAnnotator) 和 [`LabelAnnotator`](detection/annotators.md/#supervision.annotators.core.LabelAnnotator) 替换旧的 `sv.BoxAnnotator`。
+- `supervision-0.22.0` 起已移除 `sv.FPSMonitor.__call__` 方法。请使用属性 [`sv.FPSMonitor.fps`](utils/video.md/#supervision.utils.video.FPSMonitor.fps)。

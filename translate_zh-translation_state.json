@@ -1,0 +1,357 @@
+{
+  "docs/classification/core.md": {
+    "source_hash": "30298bcffc6543a8f10a6ad73b5a63c5c6a4d461",
+    "last_translated_at": "2025-07-18T03:27:47.506Z",
+    "translator_version": "1.0"
+  },
+  "docs/datasets/core.md": {
+    "source_hash": "4e04fada6c38d002f27756f062c12d8b5368bbd6",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/datasets/utils.md": {
+    "source_hash": "c35b52572fb790637a60af966ed536e76d94d7a8",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/tools/inference_slicer.md": {
+    "source_hash": "5d5d08bc53e747d49a29be20a0988c39f6031e2c",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/tools/line_zone.md": {
+    "source_hash": "8bca3cfd40236d03aafbe7dde534a3b84168c18b",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/tools/polygon_zone.md": {
+    "source_hash": "cbe76c20ff7fdb8d982684905e925bdbf1a7362c",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/tools/save_detections.md": {
+    "source_hash": "a24cee5781abebf379a3cdd9311bbf1ddc85708a",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/tools/smoother.md": {
+    "source_hash": "8076be1347f10670edbb4941745af67ef447398b",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/utils/boxes.md": {
+    "source_hash": "63a3231755c0117f7a674b9c6d5d9868b28f8a51",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/utils/converters.md": {
+    "source_hash": "48bec65fe441e2618709b5c481a17e7b9d027656",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/utils/iou_and_nms.md": {
+    "source_hash": "2b4e4fc3343a812375c7c00da86fcfdeb8d8c3c1",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/utils/masks.md": {
+    "source_hash": "9e53a6baa172c2206371441e2804db3371ef9d12",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/utils/polygons.md": {
+    "source_hash": "cd9525345a448f90e5013f0fd71f3b94b0f28f26",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/annotators.md": {
+    "source_hash": "938c49ff48b6c7d27600e16a20a1ab8624413d34",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/core.md": {
+    "source_hash": "475cdae1dac10a9cc64729d740f85214f7540d26",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/detection/metrics.md": {
+    "source_hash": "f0152facf618217539fc65bf8e243ea4a5dbff08",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/benchmark_a_model.md": {
+    "source_hash": "bf23ee0890534e62dc59340e944a57ab73c021a0",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/detect_and_annotate.md": {
+    "source_hash": "6369cce3b2a81813cb4cb7c31f99917d0a6c75d4",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/detect_small_objects.md": {
+    "source_hash": "054bdabf56d79d25211cd507d6e64a73dc386985",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/filter_detections.md": {
+    "source_hash": "1624d815166c5fed00c1de7ac36d791a38bd72e7",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/process_datasets.md": {
+    "source_hash": "36c122df411c5403de16a02fc37ed88a18c42fcd",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/save_detections.md": {
+    "source_hash": "e9e1484942d1524f19edaabc95376d4b87db36cc",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/how_to/track_objects.md": {
+    "source_hash": "c2be3cef6a4b069bd344060054c50289260ed268",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/keypoint/annotators.md": {
+    "source_hash": "32f30626bb4a35a6ae4a19bb0ab1933ce404b78c",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/keypoint/core.md": {
+    "source_hash": "7354babab00a2bb35d6c2da46d2d4e4f99816a9a",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/common_values.md": {
+    "source_hash": "c1ab8634ea7b763fb8a24ff73ce4fd5e634685e1",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/f1_score.md": {
+    "source_hash": "5cf0cd77f1ef5c72b55b7cd05c18cb17a476be83",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/mean_average_precision.md": {
+    "source_hash": "ce3e06a4117a607db54b2a49c95fcd9ea26cf888",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/mean_average_recall.md": {
+    "source_hash": "06fd991a5ec4bbe92704d8c42b52b0a4cb551159",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/precision.md": {
+    "source_hash": "2689f0556bdc36076405f83ce53efc0731fb3a9d",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/metrics/recall.md": {
+    "source_hash": "516fd7cdebe6dd1c32383b4b4798d528a4395bd6",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/annotate-video-with-detections.ipynb": {
+    "source_hash": "caa7db47e8bb019c0744d48617d957038ef0350d",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/count-objects-crossing-the-line.ipynb": {
+    "source_hash": "aa2a2df0574f44d99a92b84fe7e049b37f705dd3",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/download-supervision-assets.ipynb": {
+    "source_hash": "a36f7accdaffe81ae7a8af8b70d8a4d2bc2f1ebd",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/evaluating-alignment-of-text-to-image-diffusion-models.ipynb": {
+    "source_hash": "8d7bf8d93cdd56447f667a3c2c668fda74687539",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/object-tracking.ipynb": {
+    "source_hash": "b4b0704ca151a906534d435dd985674fded2a251",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/occupancy_analytics.ipynb": {
+    "source_hash": "c49c6a0704b5df95a6fd06439af9395731b54703",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/quickstart.ipynb": {
+    "source_hash": "59b9cae3f5791a08acf31cf9bec59f82a86747bf",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/serialise-detections-to-csv.ipynb": {
+    "source_hash": "ba545a72672384e7e4068a1026fc3ed3a5df63be",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/serialise-detections-to-json.ipynb": {
+    "source_hash": "b9c8902f48c3e23e57fd59626a4c7b973384bfcc",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/small-object-detection-with-sahi.ipynb": {
+    "source_hash": "db69b0852b6a4c4e73d7aaae2a07dc968eeda675",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/notebooks/zero-shot-object-detection-with-yolo-world.ipynb": {
+    "source_hash": "395181afcf4f862bf3219cf730fed1bc71c0da16",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/draw.md": {
+    "source_hash": "d881051f3de475a75eb001e3186e7a271cebe701",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/file.md": {
+    "source_hash": "a2a08185f125623afee96a12c464d76c9f191583",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/geometry.md": {
+    "source_hash": "d79bcfeb5e5ad9d89fbc3d4ccfcefdb94ec85dfd",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/image.md": {
+    "source_hash": "8e39136a8b2812df8f04c49df8979b9cb7d4a738",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/iterables.md": {
+    "source_hash": "5ae92dc986a64f5f8c23fee96262579882956890",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/notebook.md": {
+    "source_hash": "3eab046ab23a6d8ad1ca3c08a4ce464d28834aa9",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/utils/video.md": {
+    "source_hash": "f9a5821d6cb91d7521b8ecba7d1962a4839a7a28",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/assets.md": {
+    "source_hash": "7135f33f0b4eafbc4d6deafc74cc03afeb085dc6",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/changelog.md": {
+    "source_hash": "73efcf0b1f8bf0a4d5696fb5bd4fb42e1de9820f",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/code_of_conduct.md": {
+    "source_hash": "aa6b096dc4aeaee99cdc02b6a7cac075e8001ada",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/contributing.md": {
+    "source_hash": "ea38c9bff4bfe38a798e001e890b9b8f6ac8a146",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/cookbooks.md": {
+    "source_hash": "6f87958f8b3f875f11afd7c603d27a17428048d1",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/deprecated.md": {
+    "source_hash": "47ebcc16a792bc7643d7a8d3fb3dbc3810f51a08",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/index.md": {
+    "source_hash": "1a1be7727d64e7be42bf9a5223f1bd9e21bf6638",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/license.md": {
+    "source_hash": "a8e79145946b4d8e83db875883d8a5da8634f119",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "docs/trackers.md": {
+    "source_hash": "cb44441f1d2765ad5f2ce2f3e4ecb45c1593d785",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/count_people_in_zone/README.md": {
+    "source_hash": "994ffec64288f2e5618f90ff8b2fe072174bed10",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/heatmap_and_track/README.md": {
+    "source_hash": "2551dadb4c589af7b553922ce30d5877b0f180c2",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/speed_estimation/README.md": {
+    "source_hash": "c2e6bcbde8c2c8986e59a4e422268e7ad3d1bed3",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/time_in_zone/README.md": {
+    "source_hash": "5c91a80b319acbcf5925fb61b20f1938740408c8",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/tracking/README.md": {
+    "source_hash": "53b8a3e5109fac2c491eb6fef4e4259f73aab405",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/traffic_analysis/README.md": {
+    "source_hash": "29ed7168807b9b556a37c5b6805c70de2d024a7d",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "examples/README.md": {
+    "source_hash": "b723a247002b226bc8760bed46031743bb66d8ce",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "CODE_OF_CONDUCT.md": {
+    "source_hash": "538c78eaf7bd87e5dbb1717ed0d1c3b08ea9bb0a",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "CONTRIBUTING.md": {
+    "source_hash": "d86e08627e3853acdb18ec89277b738251076c34",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "demo.ipynb": {
+    "source_hash": "453c8014a959683d2836e3e00362ebe067d7a647",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "LICENSE.md": {
+    "source_hash": "25b9b89b5b36e5174717e831d6d2ecbbb04fd55b",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "README.md": {
+    "source_hash": "43d7cf6fd8ec20aa4344e2f0f8afd9be99248051",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  },
+  "release_process.md": {
+    "source_hash": "effaa8dda013e1a876d1369c70e5a525d784f744",
+    "last_translated_at": "2025-07-18T03:27:47.508Z",
+    "translator_version": "1.0"
+  }
+}

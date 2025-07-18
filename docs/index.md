@@ -23,9 +23,9 @@ hide:
     }
 </style>
 
-## 👋 Hello
+## 👋 你好
 
-We write your reusable computer vision tools. Whether you need to load your dataset from your hard drive, draw detections on an image or video, or count how many detections are in a zone. You can count on us!
+我们为你提供可复用的计算机视觉工具。无论你需要从硬盘加载数据集、绘制检测框到图像或视频上，还是统计区域内的检测数量，我们都能满足你！
 
 <video controls>
     <source
@@ -34,14 +34,13 @@ We write your reusable computer vision tools. Whether you need to load your data
     >
 </video>
 
-## 💻 Install
+## 💻 安装
 
-You can install `supervision` in a
-[**Python>=3.9**](https://www.python.org/) environment.
+你可以在 **Python>=3.9** 的环境中安装 `supervision`。
 
-!!! example "Installation"
+!!! example "安装"
 
-    === "pip (recommended)"
+    === "pip (推荐)"
         [![version](https://badge.fury.io/py/supervision.svg)](https://badge.fury.io/py/supervision)
         [![downloads](https://img.shields.io/pypi/dm/supervision)](https://pypistats.org/packages/supervision)
         [![license](https://img.shields.io/pypi/l/supervision)](https://github.com/roboflow/supervision/blob/main/LICENSE.md)
@@ -71,7 +70,7 @@ You can install `supervision` in a
         uv pip install supervision
         ```
 
-        For uv projects:
+        对于 uv 项目：
 
         ```bash
         uv add supervision
@@ -88,7 +87,7 @@ You can install `supervision` in a
         ```
 
 
-!!! example "conda/mamba install"
+!!! example "conda/mamba 安装"
     === "conda"
         [![conda-recipe](https://img.shields.io/badge/recipe-supervision-green.svg)](https://anaconda.org/conda-forge/supervision) [![conda-downloads](https://img.shields.io/conda/dn/conda-forge/supervision.svg)](https://anaconda.org/conda-forge/supervision) [![conda-version](https://img.shields.io/conda/vn/conda-forge/supervision.svg)](https://anaconda.org/conda-forge/supervision) [![conda-platforms](https://img.shields.io/conda/pn/conda-forge/supervision.svg)](https://anaconda.org/conda-forge/supervision)
 
@@ -103,85 +102,85 @@ You can install `supervision` in a
         mamba install -c conda-forge supervision
         ```
 
-!!! example "git clone (for development)"
+!!! example "git clone (用于开发)"
     === "virtualenv"
         ```bash
-        # clone repository and navigate to root directory
+        # 克隆仓库并进入根目录
         git clone --depth 1 -b develop https://github.com/roboflow/supervision.git
         cd supervision
 
-        # setup python environment and activate it
+        # 设置 python 环境并激活
         python3 -m venv venv
         source venv/bin/activate
         pip install --upgrade pip
 
-        # installation
+        # 安装
         pip install -e "."
         ```
 
     === "uv"
         ```bash
-        # clone repository and navigate to root directory
+        # 克隆仓库并进入根目录
         git clone --depth 1 -b develop https://github.com/roboflow/supervision.git
         cd supervision
 
-        # setup python environment and activate it
+        # 设置 python 环境并激活
         uv venv
         source .venv/bin/activate
 
-        # installation
+        # 安装
         uv pip install -r pyproject.toml -e . --all-extras
 
         ```
 
-## 🚀 Quickstart
+## 🚀 快速开始
 
 <div class="grid cards" markdown>
 
-- **Detect and Annotate**
+- **检测与标注**
 
     ---
 
-    Annotate predictions from a range of object detection and segmentation models
+    标注来自各种对象检测和分割模型的预测结果
 
-    [:octicons-arrow-right-24: Tutorial](how_to/detect_and_annotate.md)
+    [:octicons-arrow-right-24: 教程](how_to/detect_and_annotate.md)
 
-- **Track Objects**
-
-    ---
-
-    Discover how to enhance video analysis by implementing seamless object tracking
-
-    [:octicons-arrow-right-24: Tutorial](how_to/track_objects.md)
-
-- **Detect Small Objects**
+- **物体追踪**
 
     ---
 
-    Learn how to detect small objects in images
+    通过实现无缝物体追踪来增强视频分析
 
-    [:octicons-arrow-right-24: Tutorial](how_to/detect_small_objects.md)
+    [:octicons-arrow-right-24: 教程](how_to/track_objects.md)
 
-- **Count Objects Crossing Line**
+- **检测小物体**
 
     ---
 
-    Explore methods to accurately count and analyze objects crossing a predefined line
+    学习如何在图像中检测小物体
+
+    [:octicons-arrow-right-24: 教程](how_to/detect_small_objects.md)
+
+- **计算越线物体数量**
+
+    ---
+
+    探索准确计算和分析越过预定线的物体数量的方法
 
     [:octicons-arrow-right-24: Notebook](https://supervision.roboflow.com/latest/notebooks/count-objects-crossing-the-line/)
 
-- > **Filter Objects in Zone**
+- > **区域内物体过滤**
 
     ---
 
-    Master the techniques to selectively filter and focus on objects within a specific zone
+    掌握在特定区域内选择性地过滤和聚焦物体对象的技巧
 
-- **Cheatsheet**
+- **速查表**
 
     ---
 
-    Access a quick reference guide to the most common `supervision` functions
+    获取最常用的 `supervision` 函数的快速参考指南
 
-    [:octicons-arrow-right-24: Cheatsheet](https://roboflow.github.io/cheatsheet-supervision/)
+    [:octicons-arrow-right-24: 速查表](https://roboflow.github.io/cheatsheet-supervision/)
 
 </div>

@@ -1,90 +1,69 @@
-# traffic analysis
+# 交通流量分析
 
-## 👋 hello
+## 👋 你好
 
-This script performs traffic flow analysis using YOLOv8, an object-detection method and
-ByteTrack, a simple yet effective online multi-object tracking method. It uses the
-supervision package for multiple tasks such as tracking, annotations, etc.
+此脚本使用 YOLOv8（一种目标检测方法）和 ByteTrack（一种简单而有效的在线多目标跟踪方法）执行交通流量分析。
+它使用 supervision 包来执行跟踪、注释等多种任务。
 
 https://github.com/roboflow/supervision/assets/26109316/c9436828-9fbf-4c25-ae8c-60e9c81b3900
 
-## 💻 install
+## 💻 安装
 
-- clone repository and navigate to example directory
+- 克隆仓库并进入示例目录
 
     ```bash
     git clone --depth 1 -b develop https://github.com/roboflow/supervision.git
     cd supervision/examples/traffic_analysis
     ```
 
-- setup python environment and activate it \[optional\]
+- 设置 python 环境并激活它 \[可选\]
 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-- install required dependencies
+- 安装所需的依赖
 
     ```bash
     pip install -r requirements.txt
     ```
 
-- download `traffic_analysis.pt` and `traffic_analysis.mov` files
+- 下载 `traffic_analysis.pt` 和 `traffic_analysis.mov` 文件
 
     ```bash
     ./setup.sh
     ```
 
-## 🛠️ script arguments
+## 🛠️ 脚本参数
 
 - ultralytics
 
-    - `--source_weights_path`: Required. Specifies the path to the YOLO model's weights
-        file, which is essential for the object detection process. This file contains the
-        data that the model uses to identify objects in the video.
+    - `--source_weights_path`: 必需。指定 YOLO 模型权重文件的路径，这对于目标检测过程至关重要。此文件包含模型用于识别视频中对象的的数据。
 
-    - `--source_video_path`: Required. The path to the source video file that will be
-        analyzed. This is the input video on which traffic flow analysis will be performed.
+    - `--source_video_path`: 必需。要分析的源视频文件的路径。这是将执行交通流量分析的输入视频。
 
-    - `--target_video_path` (optional): The path to save the output video with
-        annotations. If not specified, the processed video will be displayed in real-time
-        without being saved.
+    - `--target_video_path` (可选): 保存带注释的输出视频的路径。如果未指定，处理后的视频将实时显示而不保存。
 
-    - `--confidence_threshold` (optional): Sets the confidence threshold for the YOLO
-        model to filter detections. Default is `0.3`. This determines how confident the
-        model should be to recognize an object in the video.
+    - `--confidence_threshold` (可选): 设置 YOLO 模型的置信度阈值以过滤检测结果。默认为 `0.3`。这决定了模型在识别视频中的对象时应有多大的置信度。
 
-    - `--iou_threshold` (optional): Specifies the IOU (Intersection Over Union) threshold
-        for the model. Default is 0.7. This value is used to manage object detection
-        accuracy, particularly in distinguishing between different objects.
+    - `--iou_threshold` (可选): 指定模型的 IOU（交并比）阈值。默认为 0.7。此值用于管理目标检测的准确性，尤其是在区分不同对象时。
 
 - inference
 
-    - `--roboflow_api_key` (optional): The API key for Roboflow services. If not provided
-        directly, the script tries to fetch it from the `ROBOFLOW_API_KEY` environment
-        variable. Follow [this guide](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key)
-        to acquire your `API KEY`.
+    - `--roboflow_api_key` (可选): Roboflow 服务的 API 密钥。如果未直接提供，脚本会尝试从 `ROBOFLOW_API_KEY` 环境变量中获取。请遵循 [此指南](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key) 获取您的 `API KEY`。
 
-    - `--model_id` (optional): Designates the Roboflow model ID to be used. The default
-        value is `"vehicle-count-in-drone-video/6"`.
+    - `--model_id` (可选): 指定要使用的 Roboflow 模型 ID。默认值为 `"vehicle-count-in-drone-video/6"`。
 
-    - `--source_video_path`: Required. The path to the source video file that will be
-        analyzed. This is the input video on which traffic flow analysis will be performed.
+    - `--source_video_path`: 必需。要分析的源视频文件的路径。这是将执行交通流量分析的输入视频。
 
-    - `--target_video_path` (optional): The path to save the output video with
-        annotations. If not specified, the processed video will be displayed in real-time
-        without being saved.
+    - `--target_video_path` (可选): 保存带注释的输出视频的路径。如果未指定，处理后的视频将实时显示而不保存。
 
-    - `--confidence_threshold` (optional): Sets the confidence threshold for the YOLO
-        model to filter detections. Default is `0.3`. This determines how confident the
-        model should be to recognize an object in the video.
+    - `--confidence_threshold` (可选): 设置 YOLO 模型的置信度阈值以过滤检测结果。默认为 `0.3`。这决定了模型在识别视频中的对象时应有多大的置信度。
 
-    - `--iou_threshold` (optional): Specifies the IOU (Intersection Over Union) threshold
-        for the model. Default is 0.7. This value is used to manage object detection
-        accuracy, particularly in distinguishing between different objects.
+    - `--iou_threshold` (可选): 指定模型的 IOU（交并比）阈值。默认为 0.7。此值用于管理目标检测的准确性，尤其是在区分不同对象时。
 
-## ⚙️ run
+## ⚙️ 运行
 
 - ultralytics
 
@@ -108,16 +87,10 @@ https://github.com/roboflow/supervision/assets/26109316/c9436828-9fbf-4c25-ae8c-
         --target_video_path data/traffic_analysis_result.mov
     ```
 
-## © license
+## © 许可
 
-This demo integrates two main components, each with its own licensing:
+此演示集成了两个主要组件，每个组件都有其自己的许可：
 
-- ultralytics: The object detection model used in this demo, YOLOv8, is distributed
-    under the [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
-    You can find more details about this license here.
+- ultralytics: 此演示中使用的目标检测模型 YOLOv8 在 [AGPL-3.0 许可](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) 下分发。您可以在此处找到有关此许可的更多详细信息。
 
-- supervision: The analytics code that powers the zone-based analysis in this demo is
-    based on the Supervision library, which is licensed under the
-    [MIT license](https://github.com/roboflow/supervision/blob/develop/LICENSE.md). This
-    makes the Supervision part of the code fully open source and freely usable in your
-    projects.
+- supervision: 为此演示中的基于区域的分析提供支持的分析代码基于 Supervision 库，该库是在 [MIT 许可](https://github.com/roboflow/supervision/blob/develop/LICENSE.md) 下许可的。这使得 Supervision 部分的代码完全开源，并且可以在您的项目中免费使用。

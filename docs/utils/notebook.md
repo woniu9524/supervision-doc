@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Notebooks Utils
+# Notebooks 工具
 
 <div class="md-typeset">
     <h2><a href="#supervision.utils.notebook.plot_image">plot_image</a></h2>

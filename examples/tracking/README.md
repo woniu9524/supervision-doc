@@ -1,81 +1,62 @@
-# tracking
+# 目标跟踪
 
-## 👋 hello
+## 👋 你好
 
-This script provides functionality for processing videos using YOLOv8 for object
-detection and Supervision for tracking and annotation.
+该脚本提供了使用 YOLOv8 进行目标检测，以及使用 Supervision 进行跟踪和标注来处理视频的功能。
 
-## 💻 install
+## 💻 安装
 
-- clone repository and navigate to example directory
+- 克隆仓库并进入示例目录
 
     ```bash
     git clone --depth 1 -b develop https://github.com/roboflow/supervision.git
     cd supervision/examples/tracking
     ```
 
-- setup python environment and activate it \[optional\]
+- 设置 Python 环境并激活它 \[可选\]
 
     ```bash
     python3 -m venv venv
     source venv/bin/activate
     ```
 
-- install required dependencies
+- 安装所需的依赖项
 
     ```bash
     pip install -r requirements.txt
     ```
 
-## 🛠️ script arguments
+## 🛠️ 脚本参数
 
 - ultralytics
 
-    - `--source_weights_path`: Required. Specifies the path to the YOLO model's weights
-        file, which is essential for the object detection process. This file contains the data
-        that the model uses to identify objects in the video.
+    - `--source_weights_path`: 必需。指定 YOLO 模型的权重文件路径，这对于目标检测过程至关重要。此文件包含模型用于识别视频中对象的的数据。
 
-    - `--source_video_path`: Required. The path to the source video file to be processed.
-        This is the video on which object detection and annotation will be performed.
+    - `--source_video_path`: 必需。要处理的源视频文件的路径。这是将执行对象检测和标注的视频。
 
-    - `--target_video_path`: Required. The path where the processed video, with annotations
-        added, will be saved. This is your output video file.
+    - `--target_video_path`: 必需。处理后添加了标注的视频将要保存的路径。这是你的输出视频文件。
 
-    - `--confidence_threshold` (optional): Sets the confidence level at which the model
-        identifies objects in the video. Default is `0.3`. A higher threshold makes the model
-        more selective, while a lower threshold makes it more inclusive in identifying objects.
+    - `--confidence_threshold` (可选): 设置模型在视频中识别对象的置信度级别。默认为 `0.3`。较高的阈值会使模型更具选择性，而较低的阈值会使其在识别对象时更具包容性。
 
-    - `--iou_threshold` (optional): Specifies the IOU (Intersection Over Union) threshold
-        for the model, defaulting to `0.7`. This parameter helps in differentiating between
-        distinct objects, especially in crowded scenes.
+    - `--iou_threshold` (可选): 指定模型的 IOU（交并比）阈值，默认为 `0.7`。此参数有助于区分不同的对象，尤其是在拥挤的场景中。
 
-- inference
+- 推理（inference）
 
-    - `--roboflow_api_key` (optional): The API key for Roboflow services. If not provided
-        directly, the script tries to fetch it from the `ROBOFLOW_API_KEY` environment
-        variable. Follow [this guide](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key)
-        to acquire your `API KEY`.
+    - `--roboflow_api_key` (可选): Roboflow 服务的 API 密钥。如果未直接提供，脚本会尝试从 `ROBOFLOW_API_KEY` 环境变量中获取。请遵循 [此指南](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key) 来获取你的 `API KEY`。
 
-    - `--model_id` (optional): Designates the Roboflow model ID to be used. The default
-        value is `"yolov8x-1280"`.
+    - `--model_id` (可选): 指定要使用的 Roboflow 模型 ID。默认值为 `"yolov8x-1280"`。
 
-    - `--source_video_path`: Required. The path to the source video file to be processed.
-        This is the video on which object detection and annotation will be performed.
+    - `--source_video_path`: 必需。要处理的源视频文件的路径。这是将执行对象检测和标注的视频。
 
-    - `--target_video_path`: Required. The path where the processed video, with annotations
-        added, will be saved. This is your output video file.
+    - `--target_video_path`: 必需。处理后添加了标注的视频将要保存的路径。这是你的输出视频文件。
 
-    - `--confidence_threshold` (optional): Sets the confidence level at which the model
-        identifies objects in the video. Default is `0.3`. A higher threshold makes the model
-        more selective, while a lower threshold makes it more inclusive in identifying objects.
+    - `--confidence_threshold` (可选): 设置模型在视频中识别对象的置信度级别。默认为 `0.3`。较高的阈值会使模型更具选择性，而较低的阈值会使其在识别对象时更具包容性。
 
-    - `--iou_threshold` (optional): Specifies the IOU (Intersection Over Union) threshold
-        for the model, defaulting to `0.7`. This parameter helps in differentiating between
-        distinct objects, especially in crowded scenes.
+    - `--iou_threshold` (可选): 指定模型的 IOU（交并比）阈值，默认为 `0.7`。此参数有助于区分不同的对象，尤其是在拥挤的场景中。
 
-## ⚙️ run
+## ⚙️ 运行
 
-- inference
+- 推理（inference）
 
     ```bash
     python inference_example.py \
@@ -93,16 +74,10 @@ detection and Supervision for tracking and annotation.
         --target_video_path tracking_result.mp4
     ```
 
-## © license
+## © 许可
 
-This demo integrates two main components, each with its own licensing:
+此演示集成了两个主要组件，每个组件都有自己的许可：
 
-- ultralytics: The object detection model used in this demo, YOLOv8, is distributed
-    under the [AGPL-3.0 license](https://github.com/ultralytics/ultralytics/blob/main/LICENSE).
-    You can find more details about this license here.
+- ultralytics：此演示中使用的对象检测模型 YOLOv8，是在 [AGPL-3.0 许可](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) 下分发的。你可以在此处找到有关此许可的更多详细信息。
 
-- supervision: The analytics code that powers the zone-based analysis in this demo is
-    based on the Supervision library, which is licensed under the
-    [MIT license](https://github.com/roboflow/supervision/blob/develop/LICENSE.md). This
-    makes the Supervision part of the code fully open source and freely usable in your
-    projects.
+- supervision：为演示中的基于区域的分析提供支持的分析代码基于 Supervision 库，该库是在 [MIT 许可](https://github.com/roboflow/supervision/blob/develop/LICENSE.md) 下许可的。这使得 Supervision 部分的代码完全开源，并且可以在你的项目中免费使用。

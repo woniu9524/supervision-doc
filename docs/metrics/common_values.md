@@ -2,9 +2,9 @@
 comments: true
 ---
 
-# Common Values
+# 通用数值
 
-This page contains supplementary values, types and enums that metrics use.
+此页面包含指标使用的补充数值、类型和枚举。
 
 <div class="md-typeset">
     <h2><a href="#supervision.metrics.core.MetricTarget">MetricTarget</a></h2>

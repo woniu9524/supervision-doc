@@ -2,19 +2,15 @@
 comments: true
 ---
 
-# Filter Detections
+# 筛选检测结果
 
-The advanced filtering capabilities of the `Detections` class offer users a versatile and efficient way to narrow down
-and refine object detections. This section outlines various filtering methods, including filtering by specific class
-or a set of classes, confidence, object area, bounding box area, relative area, box dimensions, and designated zones.
-Each method is demonstrated with concise code examples to provide users with a clear understanding of how to implement
-the filters in their applications.
+`Detections` 类提供的先进筛选功能，使您能够高效地缩小和优化目标检测结果。本节将介绍各种筛选方法，包括按特定类别或一组类别、置信度、目标面积、边界框面积、相对面积、框尺寸以及指定区域进行筛选。每种方法都配有简洁的代码示例，以帮助用户清晰地了解如何在应用中实现这些筛选器。
 
-### by specific class
+### 按特定类别筛选
 
-Allows you to select detections that belong only to one selected class.
+允许您仅选择属于一个已选类别的检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -28,7 +24,7 @@ Allows you to select detections that belong only to one selected class.
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -42,11 +38,11 @@ Allows you to select detections that belong only to one selected class.
 
     </div>
 
-### by set of classes
+### 按类别集合筛选
 
-Allows you to select detections that belong only to selected set of classes.
+允许您仅选择属于已选类别集合的检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import numpy as np
     import supervision as sv
@@ -62,7 +58,7 @@ Allows you to select detections that belong only to selected set of classes.
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import numpy as np
     import supervision as sv
@@ -78,11 +74,11 @@ Allows you to select detections that belong only to selected set of classes.
 
     </div>
 
-### by confidence
+### 按置信度筛选
 
-Allows you to select detections with specific confidence value, for example higher than selected threshold.
+允许您选择具有特定置信度的检测结果，例如高于选定阈值的检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -96,7 +92,7 @@ Allows you to select detections with specific confidence value, for example high
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -110,12 +106,11 @@ Allows you to select detections with specific confidence value, for example high
 
     </div>
 
-### by area
+### 按面积筛选
 
-Allows you to select detections based on their size. We define the area as the number of pixels occupied by the
-detection in the image. In the example below, we have sifted out the detections that are too small.
+允许您根据检测结果的大小进行选择。我们将面积定义为检测结果在图像中占据的像素数量。在下面的示例中，我们筛选掉了过小的检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -129,7 +124,7 @@ detection in the image. In the example below, we have sifted out the detections 
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -143,14 +138,11 @@ detection in the image. In the example below, we have sifted out the detections 
 
     </div>
 
-### by relative area
+### 按相对面积筛选
 
-Allows you to select detections based on their size in relation to the size of whole image. Sometimes the concept of
-detection size changes depending on the image. Detection occupying 10000 square px can be large on a 1280x720 image
-but small on a 3840x2160 image. In such cases, we can filter out detections based on the percentage of the image area
-occupied by them. In the example below, we remove too large detections.
+允许您根据检测结果相对于整个图像大小的比例来选择。有时，检测结果的大小概念会因图像而异。在 1280x720 图像上占据 10000 像素的检测结果可能很大，但在 3840x2160 图像上可能很小。在这种情况下，我们可以根据检测结果占据图像面积的百分比进行筛选。在下面的示例中，我们移除了过大的检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -168,7 +160,7 @@ occupied by them. In the example below, we remove too large detections.
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -186,13 +178,11 @@ occupied by them. In the example below, we remove too large detections.
 
     </div>
 
-### by box dimensions
+### 按边界框尺寸筛选
 
-Allows you to select detections based on their dimensions. The size of the bounding box, as well as its coordinates,
-can be criteria for rejecting detection. Implementing such filtering requires a bit of custom code but is relatively
-simple and fast.
+允许您根据检测结果的尺寸进行选择。边界框的大小以及其坐标都可以作为拒绝检测标准的依据。实现此类筛选需要一些自定义代码，但相对简单快捷。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -208,7 +198,7 @@ simple and fast.
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -224,12 +214,11 @@ simple and fast.
 
     </div>
 
-### by `PolygonZone`
+### 按 `PolygonZone` 筛选
 
-Allows you to use `Detections` in combination with `PolygonZone` to weed out bounding boxes that are in and out of the
-zone. In the example below you can see how to filter out all detections located in the lower part of the image.
+允许您将 `Detections` 与 `PolygonZone` 结合使用，以剔除区域内外的边界框。在下面的示例中，您可以看到如何滤除图像下半部分的所有检测结果。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -245,7 +234,7 @@ zone. In the example below you can see how to filter out all detections located 
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 
@@ -261,11 +250,11 @@ zone. In the example below you can see how to filter out all detections located 
 
     </div>
 
-### by mixed conditions
+### 按混合条件筛选
 
-`Detections`' greatest strength, however, is that you can build arbitrarily complex logical conditions by simply combining separate conditions using `&` or `|`.
+然而，`Detections` 最强大的地方在于，你可以通过简单地使用 `&` 或 `|` 组合单独的条件，来构建任意复杂的逻辑条件。
 
-=== "After"
+=== "筛选后"
     ```python
     import supervision as sv
 
@@ -281,7 +270,7 @@ zone. In the example below you can see how to filter out all detections located 
 
     </div>
 
-=== "Before"
+=== "筛选前"
     ```python
     import supervision as sv
 

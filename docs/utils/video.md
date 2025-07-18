@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Video Utils
+# 视频工具
 
 <div class="md-typeset">
     <h2><a href="#supervision.utils.video.VideoInfo">VideoInfo</a></h2>

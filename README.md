@@ -30,26 +30,25 @@
 
 </div>
 
-## 👋 hello
+## 👋 你好
 
-**We write your reusable computer vision tools.** Whether you need to load your dataset from your hard drive, draw detections on an image or video, or count how many detections are in a zone. You can count on us! 🤝
+**我们为你编写可复用的计算机视觉工具。** 无论是需要从硬盘加载数据集、在图像或视频上绘制检测框，还是计算区域内的检测数量。你都可以信赖我们！🤝
 
-## 💻 install
+## 💻 安装
 
-Pip install the supervision package in a
-[**Python>=3.9**](https://www.python.org/) environment.
+在 [**Python>=3.9**](https://www.python.org/) 环境中，通过 pip 安装 supervision 包。
 
 ```bash
 pip install supervision
 ```
 
-Read more about conda, mamba, and installing from source in our [guide](https://roboflow.github.io/supervision/).
+在我们的[指南](https://roboflow.github.io/supervision/)中可以找到关于 conda、mamba 以及从源码安装的更多信息。
 
-## 🔥 quickstart
+## 🔥 快速开始
 
-### models
+### 模型
 
-Supervision was designed to be model agnostic. Just plug in any classification, detection, or segmentation model. For your convenience, we have created [connectors](https://supervision.roboflow.com/latest/detection/core/#detections) for the most popular libraries like Ultralytics, Transformers, or MMDetection.
+Supervision 的设计目标是模型无关。只需接入任何分类、检测或分割模型。为了方便你使用，我们为 Ultralytics、Transformers 或 MMDetection 等主流库创建了[连接器](https://supervision.roboflow.com/latest/detection/core/#detections)。
 
 ```python
 import cv2
@@ -66,11 +65,11 @@ len(detections)
 ```
 
 <details>
-<summary>👉 more model connectors</summary>
+<summary>👉 更多模型连接器</summary>
 
 - inference
 
-  Running with [Inference](https://github.com/roboflow/inference) requires a [Roboflow API KEY](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key).
+  使用 [Inference](https://github.com/roboflow/inference) 需要一个 [Roboflow API KEY](https://docs.roboflow.com/api-reference/authentication#retrieve-an-api-key)。
 
   ```python
   import cv2
@@ -88,9 +87,9 @@ len(detections)
 
 </details>
 
-### annotators
+### 标注器 (Annotators)
 
-Supervision offers a wide range of highly customizable [annotators](https://supervision.roboflow.com/latest/detection/annotators/), allowing you to compose the perfect visualization for your use case.
+Supervision 提供了广泛且高度可定制的[标注器](https://supervision.roboflow.com/latest/detection/annotators/)，可让你组合出最适合你用例的可视化效果。
 
 ```python
 import cv2
@@ -107,9 +106,9 @@ annotated_frame = box_annotator.annotate(
 
 https://github.com/roboflow/supervision/assets/26109316/691e219c-0565-4403-9218-ab5644f39bce
 
-### datasets
+### 数据集
 
-Supervision provides a set of [utils](https://supervision.roboflow.com/latest/datasets/core/) that allow you to load, split, merge, and save datasets in one of the supported formats.
+Supervision 提供了一套[工具](https://supervision.roboflow.com/latest/datasets/core/)，可让你以支持的格式之一加载、拆分、合并和保存数据集。
 
 ```python
 import supervision as sv
@@ -124,16 +123,16 @@ ds = sv.DetectionDataset.from_coco(
 )
 
 path, image, annotation = ds[0]
-    # loads image on demand
+    # 按需加载图像
 
 for path, image, annotation in ds:
-    # loads image on demand
+    # 按需加载图像
 ```
 
 <details close>
-<summary>👉 more dataset utils</summary>
+<summary>👉 更多数据集工具</summary>
 
-- load
+- 加载
 
   ```python
   dataset = sv.DetectionDataset.from_yolo(
@@ -153,7 +152,7 @@ for path, image, annotation in ds:
   )
   ```
 
-- split
+- 拆分
 
   ```python
   train_dataset, test_dataset = dataset.split(split_ratio=0.7)
@@ -163,7 +162,7 @@ for path, image, annotation in ds:
   # (700, 150, 150)
   ```
 
-- merge
+- 合并
 
   ```python
   ds_1 = sv.DetectionDataset(...)
@@ -185,7 +184,7 @@ for path, image, annotation in ds:
   # ['cat', 'dog', 'person']
   ```
 
-- save
+- 保存
 
   ```python
   dataset.as_yolo(
@@ -205,7 +204,7 @@ for path, image, annotation in ds:
   )
   ```
 
-- convert
+- 转换
 
   ```python
   sv.DetectionDataset.from_yolo(
@@ -220,29 +219,29 @@ for path, image, annotation in ds:
 
 </details>
 
-## 🎬 tutorials
+## 🎬 教程
 
-Want to learn how to use Supervision? Explore our [how-to guides](https://supervision.roboflow.com/develop/how_to/detect_and_annotate/), [end-to-end examples](https://github.com/roboflow/supervision/tree/develop/examples), [cheatsheet](https://roboflow.github.io/cheatsheet-supervision/), and [cookbooks](https://supervision.roboflow.com/develop/cookbooks/)!
+想学习如何使用 Supervision？请浏览我们的[操作指南](https://supervision.roboflow.com/develop/how_to/detect_and_annotate/)、[端到端示例](https://github.com/roboflow/supervision/tree/develop/examples)、[速查表](https://roboflow.github.io/cheatsheet-supervision/)和[操作手册](https://supervision.roboflow.com/develop/cookbooks/)！
 
 <br/>
 
 <p align="left">
 <a href="https://youtu.be/hAWpsIuem10" title="Dwell Time Analysis with Computer Vision | Real-Time Stream Processing"><img src="https://github.com/SkalskiP/SkalskiP/assets/26109316/a742823d-c158-407d-b30f-063a5d11b4e1" alt="Dwell Time Analysis with Computer Vision | Real-Time Stream Processing" width="300px" align="left" /></a>
-<a href="https://youtu.be/hAWpsIuem10" title="Dwell Time Analysis with Computer Vision | Real-Time Stream Processing"><strong>Dwell Time Analysis with Computer Vision | Real-Time Stream Processing</strong></a>
-<div><strong>Created: 5 Apr 2024</strong></div>
-<br/>Learn how to use computer vision to analyze wait times and optimize processes. This tutorial covers object detection, tracking, and calculating time spent in designated zones. Use these techniques to improve customer experience in retail, traffic management, or other scenarios.</p>
+<a href="https://youtu.be/hAWpsIuem10" title="Dwell Time Analysis with Computer Vision | Real-Time Stream Processing"><strong>基于计算机视觉的停留时间分析 | 实时流处理</strong></a>
+<div><strong>创建时间: 2024 年 4 月 5 日</strong></div>
+<br/>了解如何使用计算机视觉分析等待时间并优化流程。本教程涵盖对象检测、跟踪以及计算指定区域内的检测数量。使用这些技术可以在零售、交通管理或其他场景中改善客户体验。</p>
 
 <br/>
 
 <p align="left">
 <a href="https://youtu.be/uWP6UjDeZvY" title="Speed Estimation & Vehicle Tracking | Computer Vision | Open Source"><img src="https://github.com/SkalskiP/SkalskiP/assets/26109316/61a444c8-b135-48ce-b979-2a5ab47c5a91" alt="Speed Estimation & Vehicle Tracking | Computer Vision | Open Source" width="300px" align="left" /></a>
-<a href="https://youtu.be/uWP6UjDeZvY" title="Speed Estimation & Vehicle Tracking | Computer Vision | Open Source"><strong>Speed Estimation & Vehicle Tracking | Computer Vision | Open Source</strong></a>
-<div><strong>Created: 11 Jan 2024</strong></div>
-<br/>Learn how to track and estimate the speed of vehicles using YOLO, ByteTrack, and Roboflow Inference. This comprehensive tutorial covers object detection, multi-object tracking, filtering detections, perspective transformation, speed estimation, visualization improvements, and more.</p>
+<a href="https://youtu.be/uWP6UjDeZvY" title="Speed Estimation & Vehicle Tracking | Computer Vision | Open Source"><strong>速度估算与车辆跟踪 | 计算机视觉 | 开源</strong></a>
+<div><strong>创建时间: 2024 年 1 月 11 日</strong></div>
+<br/>学习如何使用 YOLO、ByteTrack 和 Roboflow Inference 进行车辆跟踪和速度估算。本综合教程涵盖对象检测、多对象跟踪、检测过滤、透视变换、速度估算、可视化改进等内容。</p>
 
-## 💜 built with supervision
+## 💜 使用 supervision 构建
 
-Did you build something cool using supervision? [Let us know!](https://github.com/roboflow/supervision/discussions/categories/built-with-supervision)
+您是否使用 supervision 构建了很棒的东西？[告诉我们！](https://github.com/roboflow/supervision/discussions/categories/built-with-supervision)
 
 https://user-images.githubusercontent.com/26109316/207858600-ee862b22-0353-440b-ad85-caa0c4777904.mp4
 
@@ -250,13 +249,13 @@ https://github.com/roboflow/supervision/assets/26109316/c9436828-9fbf-4c25-ae8c-
 
 https://github.com/roboflow/supervision/assets/26109316/3ac6982f-4943-4108-9b7f-51787ef1a69f
 
-## 📚 documentation
+## 📚 文档
 
-Visit our [documentation](https://roboflow.github.io/supervision) page to learn how supervision can help you build computer vision applications faster and more reliably.
+访问我们的[文档](https://roboflow.github.io/supervision)页面，了解 supervision 如何帮助您更快、更可靠地构建计算机视觉应用程序。
 
-## 🏆 contribution
+## 🏆 贡献
 
-We love your input! Please see our [contributing guide](https://github.com/roboflow/supervision/blob/main/CONTRIBUTING.md) to get started. Thank you 🙏 to all our contributors!
+我们非常乐意获得您的反馈！请参阅我们的[贡献指南](https://github.com/roboflow/supervision/blob/main/CONTRIBUTING.md)以开始。感谢所有贡献者！🙏
 
 <p align="center">
     <a href="https://github.com/roboflow/supervision/graphs/contributors">

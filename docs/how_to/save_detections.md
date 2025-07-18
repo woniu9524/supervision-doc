@@ -2,21 +2,21 @@
 comments: true
 ---
 
-# Save Detections
+# 保存检测结果
 
-Supervision enables an easy way to save detections in .CSV and .JSON files for offline
-processing. This guide demonstrates how to perform video inference using the
-[Inference](https://github.com/roboflow/inference),
-[Ultralytics](https://github.com/ultralytics/ultralytics) or
-[Transformers](https://github.com/huggingface/transformers) packages and save their results with
-[`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink) and
-[`sv.JSONSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.JSONSink).
+Supervision 提供了便捷的方式将检测结果保存为 .CSV 和 .JSON 文件，以便进行离线处理。本指南将演示如何使用
+[Inference](https://github.com/roboflow/inference)、
+[Ultralytics](https://github.com/ultralytics/ultralytics) 或
+[Transformers](https://github.com/huggingface/transformers)
+包执行视频推理，并使用 [`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink) 和
+[`sv.JSONSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.JSONSink)
+保存其结果。
 
-## Run Detection
+## 执行检测
 
-First, you'll need to obtain predictions from your object detection or segmentation
-model. You can learn more on this topic in our
-[How to Detect and Annotate](/latest/how_to/detect_and_annotate.md) guide.
+首先，您需要从目标检测或分割模型中获取预测结果。您可以在我们的
+[如何检测和标注](/latest/how_to/detect_and_annotate.md)
+指南中了解更多相关信息。
 
 === "Inference"
     ```python
@@ -71,13 +71,13 @@ model. You can learn more on this topic in our
         detections = sv.Detections.from_transformers(results)
     ```
 
-## Save Detections as CSV
+## 以 CSV 格式保存检测结果
 
-To save detections to a `.CSV` file, open our
-[`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink)
-and then pass the
+要将检测结果保存到 `.CSV` 文件，请打开我们的
+[`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink)，
+然后将推理产生的
 [`sv.Detections`](/latest/detection/core/#supervision.detection.core.Detections)
-object resulting from the inference to it. Its fields are parsed and saved on disk.
+对象传递给它。其字段将被解析并保存到磁盘。
 
 === "Inference"
     ```{ .py hl_lines="7 12" }
@@ -144,14 +144,11 @@ object resulting from the inference to it. Its fields are parsed and saved on di
 | 944.889 | 899.641 | 1235.42 | 1308.80 | 7        | 0.6752     |            | truck      |
 | 1439.78 | 1077.79 | 1621.27 | 1231.40 | 2        | 0.6450     |            | car        |
 
-## Custom Fields
+## 自定义字段
 
-Besides regular fields in
-[`sv.Detections`](/latest/detection/core/#supervision.detection.core.Detections),
+除了 [`sv.Detections`](/latest/detection/core/#supervision.detection.core.Detections) 中的常规字段外，
 [`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink)
-also allows you to add custom information to each row, which can be passed via the
-`custom_data` dictionary. Let's utilize this feature to save information about the
-frame index from which the detections originate.
+还允许您向每行添加自定义信息，这些信息可以通过 `custom_data` 字典传递。让我们利用此功能来保存检测来源的帧索引信息。
 
 === "Inference"
     ```{ .py hl_lines="8 12" }
@@ -218,13 +215,12 @@ frame index from which the detections originate.
 | 944.889 | 899.641 | 1235.42 | 1308.80 | 7        | 0.6752     |            | truck      | 0           |
 | 1439.78 | 1077.79 | 1621.27 | 1231.40 | 2        | 0.6450     |            | car        | 0           |
 
-## Save Detections as JSON
+## 以 JSON 格式保存检测结果
 
-If you prefer to save the result in a `.JSON` file instead of a `.CSV` file, all you
-need to do is replace
+如果您倾向于将结果保存为 `.JSON` 文件而不是 `.CSV` 文件，您只需将
 [`sv.CSVSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.CSVSink)
-with
-[`sv.JSONSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.JSONSink).
+替换为
+[`sv.JSONSink`](/latest/detection/tools/save_detections/#supervision.detection.tools.csv_sink.JSONSink)。
 
 === "Inference"
     ```{ .py hl_lines="7" }

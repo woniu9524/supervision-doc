@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# F1 Score
+# F1 分数
 
 <div class="md-typeset">
     <h2><a href="#supervision.metrics.f1_score.F1Score">F1Score</a></h2>

@@ -5,36 +5,36 @@ status: new
 
 ![Corgi Example](https://media.roboflow.com/supervision/image-examples/how-to/benchmark-models/corgi-sorted-2.png)
 
-# Benchmark a Model
+# Benchmarking a Model
 
-Have you ever trained multiple detection models and wondered which one performs best on your specific use case? Or maybe you've downloaded a pre-trained model and want to verify its performance on your dataset? Model benchmarking is essential for making informed decisions about which model to deploy in production.
+您是否曾训练过多个检测模型，并想知道哪一个在您的特定用例中表现最佳？或者，您下载了一个预训练模型，并想在您的数据集上验证其性能？模型基准测试是做出有关在生产环境中部署哪个模型的明智决策的关键。
 
-This guide will show an easy way to benchmark your results using `supervision`. It will go over:
+本指南将展示一种使用 `supervision` 基准测试结果的便捷方法。它将涵盖：
 
-1. [Loading a dataset](#loading-a-dataset)
-2. [Loading a model](#loading-a-model)
-3. [Benchmarking Basics](#benchmarking-basics)
-4. [Running a Model](#running-a-model)
-5. [Remapping Classes](#remapping-classes)
-6. [Visual Benchmarking](#visual-benchmarking)
-7. [Benchmarking Metrics](#benchmarking-metrics)
-8. [Mean Average Precision (mAP)](#mean-average-precision-map)
-9. [F1 Score](#f1-score)
-10. [Bonus: Model Leaderboard](#model-leaderboard)
+1. [加载数据集](#loading-a-dataset)
+2. [加载模型](#loading-a-model)
+3. [基准测试基础](#benchmarking-basics)
+4. [运行模型](#running-a-model)
+5. [重新映射类别](#remapping-classes)
+6. [可视化基准测试](#visual-benchmarking)
+7. [基准测试指标](#benchmarking-metrics)
+8. [平均精度均值 (mAP)](#mean-average-precision-map)
+9. [F1 分数](#f1-score)
+10. [加分项：模型排行榜](#model-leaderboard)
 
-This guide will use an instance segmentation model, but it applies to object detection, instance segmentation, and oriented bounding box models (OBB) too.
+本指南将使用一个实例分割模型，但它也适用于目标检测、实例分割和定向边界框模型（OBB）。
 
-A condensed version of this guide is available as a [Colab Notebook](https://colab.research.google.com/drive/1HoOY9pZoVwGiRMmLHtir0qT6Uj45w6Ps?usp=sharing).
+本指南的精简版本可在 [Colab Notebook](https://colab.research.google.com/drive/1HoOY9pZoVwGiRMmLHtir0qT6Uj45w6Ps?usp=sharing) 中找到。
 
-## Loading a Dataset
+## 加载数据集
 
-Suppose you start with a dataset. Perhaps you found it on [Universe](https://universe.roboflow.com/); perhaps you [labeled your own](https://roboflow.com/how-to-label/yolo11). In either case, this guide assumes you know of a labelled dataset at hand.
+假设您有一个数据集。您可能在 [Universe](https://universe.roboflow.com/) 上找到它；或者您可能[标注了自己的数据](https://roboflow.com/how-to-label/yolo11)。无论哪种情况，本指南假设您手头有一个已标注的数据集。
 
-We'll use the following libraries:
+我们将使用以下库：
 
-- `roboflow` to manage the dataset and deploy models
-- `inference` to run the models
-- `supervision` to evaluate the model results
+- `roboflow` 用于管理数据集和部署模型
+- `inference` 用于运行模型
+- `supervision` 用于评估模型结果
 
 ```bash
 pip install roboflow supervision
@@ -43,9 +43,9 @@ pip install git+https://github.com/roboflow/inference.git@linas/allow-latest-rc-
 
 !!! info
 
-    We're updating `inference` at the moment. Please install it as shown above.
+    我们目前正在更新 `inference`。请按照所示方式安装它。
 
-Here's how you can download a dataset:
+以下是如何下载数据集：
 
 ```python
 from roboflow import Roboflow
@@ -55,11 +55,11 @@ project = rf.workspace("<WORKSPACE_NAME>").project("<PROJECT_NAME>")
 dataset = project.version(<DATASET_VERSION_NUMBER>).download("<FORMAT>")
 ```
 
-If your dataset is from Universe, go to `Dataset` > `Download Dataset` > select the format (e.g. `YOLOv11`) > `Show download code`.
+如果您的数据集来自 Universe，请转到 `Dataset` > `Download Dataset` > 选择格式（例如 `YOLOv11`）> `Show download code`。
 
-If labeling your own data, go to the [dashboard](https://app.roboflow.com/) and check this [guide](https://docs.roboflow.com/api-reference/workspace-and-project-ids) to find your workspace and project IDs.
+如果您自己标注数据，请转到[仪表板](https://app.roboflow.com/)并查看本[指南](https://docs.roboflow.com/api-reference/workspace-and-project-ids)以查找您的工作区和项目 ID。
 
-In this guide, we shall use a small [Corgi v2](https://universe.roboflow.com/model-examples/segmented-animals-basic) dataset. It is well-labeled and comes with a test set.
+在本指南中，我们将使用一个小的 [Corgi v2](https://universe.roboflow.com/model-examples/segmented-animals-basic) 数据集。它标注良好，并附带了一个测试集。
 
 ```python
 from roboflow import Roboflow
@@ -69,17 +69,17 @@ project = rf.workspace("fbamse1-gm2os").project("corgi-v2")
 dataset = project.version(4).download("yolov11")
 ```
 
-This will create a folder called `Corgi-v2-4` with the dataset in the current working directory, with `train`, `test`, and `valid` folders and a `data.yaml` file.
+这将在当前工作目录中创建一个名为 `Corgi-v2-4` 的文件夹，其中包含 `train`、`test` 和 `valid` 文件夹以及一个 `data.yaml` 文件。
 
-## Loading a Model
+## 加载模型
 
-Let's load a model.
+让我们加载一个模型。
 
 === "Inference, Local"
 
-    Roboflow supports a range of state-of-the-art [pre-trained models](https://inference.roboflow.com/quickstart/aliases/) for object detection, instance segmentation, and pose tracking. You don't even need an API key!
+    Roboflow 支持各种最先进的[预训练模型](https://inference.roboflow.com/quickstart/aliases/)，用于目标检测、实例分割和姿态跟踪。您甚至不需要 API 密钥！
 
-    Let's load such a model with inference [`inference`](https://inference.roboflow.com/).
+    让我们使用 [`inference`](https://inference.roboflow.com/) 加载这样一个模型。
 
     ```python
     from inference import get_model
@@ -89,9 +89,9 @@ Let's load a model.
 
 === "Inference, Deployed"
 
-    You can train and deploy a model without leaving the Roboflow platform. See this [guide](https://docs.roboflow.com/train/train/train-from-scratch) for more details.
+    您无需离开 Roboflow 平台即可训练和部署模型。有关更多详细信息，请参阅本[指南](https://docs.roboflow.com/train/train/train-from-scratch)。
 
-    To load a model, you can use inference:
+    要加载模型，您可以使用 inference：
 
     ```python
     from inference import get_model
@@ -102,7 +102,7 @@ Let's load a model.
 
 === "Ultralytics"
 
-    Similarly to Inference, Ultralytics allows you to run a variety of models.
+    与 Inference 类似，Ultralytics 允许您运行各种模型。
 
     ```bash
     pip install "ultralytics<=8.3.40"
@@ -114,32 +114,32 @@ Let's load a model.
     model = YOLO("yolo11s-seg.pt")
     ```
 
-## Benchmarking Basics
+## 基准测试基础
 
-Evaluating your model requires careful selection of the dataset. Which images should you use?Let's go over the different scenarios.
+评估您的模型需要仔细选择数据集。您应该使用哪些图像？让我们仔细研究一下不同的场景。
 
-- **Unrelated Dataset**: If you have a dataset that was not used to train the model, this is the best choice.
-- **Training Set**: This is the set of images used to train the model. This is fine if the model was not trained on this dataset. Otherwise, **never** use it for benchmarking - the results will seem unrealistically good.
-- **Validation Set**: This is the set of images used to validate the model during training. Every Nth training epoch, the model is evaluated on the validation set. Often the training is stopped once the validation loss stops improving. Therefore, even while the images aren't used to train the model, it still indirectly influences the training outcome.
-- **Test Set**: This is the set of images kept aside for model testing. It is exactly the set you should use for benchmarking. If the dataset was split correctly, none of these images would be shown to the model during training.
+- **不相关的数据集**：如果您有一个未用于训练模型的日期集，这是最佳选择。
+- **训练集**：这是用于训练模型的图像集。如果模型未在此数据集上训练，则此方法可用。否则，**切勿**将其用于基准测试 - 结果看起来会好得不切实际。
+- **验证集**：这是在训练期间用于验证模型的图像集。每 N 个训练 epoch，模型将在验证集上进行评估。通常，模型训练会停止，直到验证损失停止改进。因此，即使图像未用于训练模型，它仍然间接影响训练结果。
+- **测试集**：这是为模型测试保留的图像集。这正是您应该用于基准测试的集合。如果数据集已正确拆分，模型在训练期间不会看到这些图像中的任何一个。
 
-Therefore, an unrelated dataset or the `test` set is the best choice for benchmarking.
-Several other problems may arise:
+因此，不相关的数据集或 `test` 集是基准测试的最佳选择。
+还可能出现其他几个问题：
 
-- **Extra Classes**: An unrelated dataset may contain additional classes which you may need to [filter out](https://supervision.roboflow.com/how_to/filter_detections/#by-set-of-classes) before computing metrics.
-- **Class Mismatch**: In an unrelated dataset, the class names or IDs may be different to what your model produces, you'll need to remap them, which is [shown in this guide](#running-a-model).
-- **Data Contamination**: The `test` set may not be split correctly, with images from the test set also present in `training` or `validation` set and used during training. In this case, the results will be overly optimistic. This also applies when **very similar** images are used for training and testing - e.g. those taken in the same environment, same lighting conditions, similar angle, etc.
-- **Missing Test Set**: Some datasets do not come with a test set. In this case, you should collect and [label](https://roboflow.com/annotate) your own data. Alternatively, a validation set could be used, but the results could be overly optimistic. Make sure to test in the real world as soon as possible.
+- **额外类别**：不相关的数据集可能包含您需要[过滤掉](https://supervision.roboflow.com/how_to/filter_detections/#by-set-of-classes)的其他类别，然后再计算指标。
+- **类别不匹配**：在不相关的数据集中，类别名称或 ID 可能与模型生成的名称或 ID 不同，您需要重新映射它们，这在本[指南](#running-a-model)中有说明。
+- **数据污染**：`test` 集可能未正确拆分，测试集中的图像也存在于 `training` 或 `validation` 集并用于训练。在这种情况下，结果将过于乐观。当训练和测试使用**非常相似**的图像时，也会出现这种情况 - 例如，在相同的环境、相同的照明条件、相似的角度等条件下拍摄的图像。
+- **缺少测试集**：某些数据集不附带测试集。在这种情况下，您应该收集并[标注](https://roboflow.com/annotate)您自己的数据。或者，可以使用验证集，但结果可能会过于乐观。请务必尽快在实际环境中进行测试。
 
-## Running a Model
+## 运行模型
 
-At this stage, you should have:
+此时，您应该已：
 
-- A dataset of labeled images to evaluate the model.
-- A model prepared for benchmarking.
+- 一个包含已标注图像的数据集供评估模型。
+- 一个已准备好进行基准测试的模型。
 
-With these ready, we can now run the model and obtain predictions.
-We'll use `supervision` to create a dataset iterator, and then run the model on each image.
+准备好这些之后，我们就可以运行模型并获得预测。
+我们将使用 `supervision` 创建一个数据集迭代器，然后对每个图像运行模型。
 
 === "Inference"
 
@@ -189,12 +189,12 @@ We'll use `supervision` to create a dataset iterator, and then run the model on 
         targets_list.append(label)
     ```
 
-## Remapping classes
+## 重新映射类别
 
-Did you notice an issue in the above logic?
-Since we're using an unrelated dataset, the class names and IDs may be different from what the model was trained on.
+您是否注意到上面逻辑中的问题？
+由于我们使用了一个不相关的数据集，类别名称和 ID 可能与模型训练时使用的不同。
 
-We need to remap them to match the dataset classes. Here's how to do it:
+我们需要重新映射它们，以匹配数据集的类别。方法如下：
 
 ```python
 def remap_classes(
@@ -211,11 +211,11 @@ def remap_classes(
     predictions["class_name"] = np.array(new_class_names)
 ```
 
-Let's also remove the predictions that are not in the dataset classes.
+我们还要删除不在数据集类别中的预测。
 
 === "Inference"
 
-    Dataset class names and IDs can be found in the `data.yaml` file, or by printing `dataset.classes`.
+    可以在 `data.yaml` 文件中找到数据集类别名称和 ID，或通过打印 `dataset.classes` 来查看。
 
     ```python
     import supervision as sv
@@ -250,10 +250,9 @@ Let's also remove the predictions that are not in the dataset classes.
 
 === "Ultralytics"
 
-    Dataset class names and IDs can be found in the `data.yaml` file, or by printing `dataset.classes`.
+    可以在 `data.yaml` 文件中找到数据集类别名称和 ID，或通过打印 `dataset.classes` 来查看。
 
-    Each model will have a different class mapping, so make sure to check the model's documentation. In this case, the model was trained on the COCO dataset, with a class
-    configuration found [here](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/coco8.yaml).
+    每个模型将具有不同的类别映射，因此请务必检查模型的文档。在本例中，模型是在 COCO 数据集上训练的，其类别配置可在[此处](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/coco8.yaml)找到。
 
     ```python
     import supervision as sv
@@ -286,10 +285,10 @@ Let's also remove the predictions that are not in the dataset classes.
         targets_list.append(label)
     ```
 
-## Visualizing Predictions
+## 可视化预测
 
-The first step in evaluating your model’s performance is to visualize its predictions.
-This gives an intuitive sense of how well your model is detecting objects and where it might be failing.
+评估模型性能的第一步是可视化其预测结果。
+这可以直观地了解您的模型检测对象的程度以及它可能在哪些方面出现故障。
 
 ```python
 import supervision as sv
@@ -313,29 +312,29 @@ for image_path, predictions, targets in zip(
 sv.plot_images_grid(images=annotated_images, grid_size=GRID_SIZE)
 ```
 
-Here, predictions in purple are targets (ground truth), and predictions in teal are model predictions.
+在此，紫色中的预测是目标（真实情况），而青色中的预测是模型预测。
 
 ![Basic Model Comparison](https://media.roboflow.com/supervision/image-examples/how-to/benchmark-models/basic-model-comparison-corgi.png)
 
 !!! tip
 
-    Use `sv.BoxAnnotator` for object detection and `sv.OrientedBoxAnnotator` for OBB.
+    对于目标检测，请使用 `sv.BoxAnnotator`；对于 OBB，请使用 `sv.OrientedBoxAnnotator`。
 
-    See [annotator documentation](https://supervision.roboflow.com/latest/detection/annotators/) for even more options.
+    有关更多选项，请参阅[标注器文档](https://supervision.roboflow.com/latest/detection/annotators/)。
 
-## Benchmarking Metrics
+## 基准测试指标
 
-With multiple models, fine details matter. Visual inspection may not be enough. `supervision` provides a collection of metrics that help obtain precise numerical results of model performance.
+有了多个模型，细节很重要。目视检查可能不够。`supervision` 提供了一系列指标，可帮助获得模型性能的精确数值结果。
 
-### Mean Average Precision (mAP)
+### 平均精度均值 (mAP)
 
-We'll start with [MeanAveragePrecision (mAP)](https://supervision.roboflow.com/latest/metrics/mean_average_precision/#supervision.metrics.mean_average_precision.MeanAveragePrecision), which is the most commonly used metric for object detection. It measures the average precision across all classes and IoU thresholds.
+我们将从[平均精度均值 (mAP)](https://supervision.roboflow.com/latest/metrics/mean_average_precision/#supervision.metrics.mean_average_precision.MeanAveragePrecision) 开始，这是目标检测最常用的指标。它衡量所有类别和 IoU 阈值的平均精度。
 
-For a thorough explanation, check out our [blog](https://blog.roboflow.com/mean-average-precision/) and [Youtube video](https://www.youtube.com/watch?v=oqXDdxF_Wuw).
+有关详细说明，请查看我们的[博客](https://blog.roboflow.com/mean-average-precision/)和[YouTube 视频](https://www.youtube.com/watch?v=oqXDdxF_Wuw)。
 
-Here, the most popular value is `mAP 50:95`. It represents the average precision across all classes and IoU thresholds (`0.5` to `0.95`), whereas other values such as `mAP 50` or `mAP 75` only consider a single IoU threshold (`0.5` and `0.75` respectively).
+在这里，最常用的值是 `mAP 50:95`。它表示所有类别和 IoU 阈值（从 `0.5` 到 `0.95`）的平均精度，而其他值如 `mAP 50` 或 `mAP 75` 仅考虑单个 IoU 阈值（分别为 `0.5` 和 `0.75`）。
 
-Let's compute the mAP:
+让我们计算 mAP：
 
 ```python
 from supervision.metrics import MeanAveragePrecision, MetricTarget
@@ -344,7 +343,7 @@ map_metric = MeanAveragePrecision(metric_target=MetricTarget.MASKS)
 map_result = map_metric.update(predictions_list, targets_list).compute()
 ```
 
-Try printing the result to see it at a glance:
+尝试打印结果以一目了然地查看：
 
 ```python
 print(map_result)
@@ -367,7 +366,7 @@ Medium objects: ...
 Large objects: ...
 ```
 
-You can also plot the results:
+您也可以绘制结果：
 
 ```python
 map_result.plot()
@@ -375,13 +374,13 @@ map_result.plot()
 
 ![mAP Plot](https://media.roboflow.com/supervision/image-examples/how-to/benchmark-models/mAP-plot-corgi.png)
 
-The metric also breaks down the results by detected object area. Small, medium and large are simply those with area less than 32², between 32² and 96², and greater than 96² pixels respectively.
+该指标还可以细分按检测对象区域划分的结果。Small（小）、Medium（中）和 Large（大）分别只需面积小于 32²、介于 32² 和 96² 之间以及大于 96² 像素即可。
 
-### F1 Score
+### F1 分数
 
-The [F1 Score](https://supervision.roboflow.com/latest/metrics/f1_score/) is another useful metric, especially when dealing with an imbalance between false positives and false negatives. It’s the harmonic mean of **precision** (how many predictions are correct) and **recall** (how many actual instances were detected).
+[F1 分数](https://supervision.roboflow.com/latest/metrics/f1_score/)是另一个有用的指标，尤其是在处理假阳性和假阴性之间的不平衡时。它是**精确率**（预测正确的数量）和**召回率**（检测到的实际实例数量）的调和平均值。
 
-Here's how you can compute the F1 score:
+以下是计算 F1 分数的方法：
 
 ```python
 from supervision.metrics import F1Score, MetricTarget
@@ -390,7 +389,7 @@ f1_metric = F1Score(metric_target=MetricTarget.MASKS)
 f1_result = f1_metric.update(predictions_list, targets_list).compute()
 ```
 
-As with mAP, you can also print the result:
+与 mAP 一样，您也可以打印结果：
 
 ```python
 print(f1_result)
@@ -412,7 +411,7 @@ Medium objects: ...
 Large objects: ...
 ```
 
-Similarly, you can plot the results:
+同样，您也可以绘制结果：
 
 ```python
 f1_result.plot()
@@ -420,22 +419,22 @@ f1_result.plot()
 
 ![F1 Plot](https://media.roboflow.com/supervision/image-examples/how-to/benchmark-models/f1-score-corgi.png)
 
-As with mAP, the metric also breaks down the results by detected object area. Small, medium and large are simply those with area less than 32², between 32² and 96², and greater than 96² pixels respectively.
+与 mAP 一样，该指标还可以细分按检测对象区域划分的结果。Small（小）、Medium（中）和 Large（大）分别只需面积小于 32²、介于 32² 和 96² 之间以及大于 96² 像素即可。
 
-## Model Leaderboard
+## 模型排行榜
 
-Here to compare the basic models? We've got you covered. Check out our [Model Leaderboard](https://leaderboard.roboflow.com/) to see how different models perform and to get a sense of the state-of-the-art results. It's a great place to understand what the leading models can achieve and to compare your own results.
+想比较基础模型吗？我们已为您准备好。请查看我们的[模型排行榜](https://leaderboard.roboflow.com/)，了解不同模型的表现，并了解最先进的结果。这是一个了解领先模型能达到什么水平的好地方，也可以比较您自己的结果。
 
-Even better, the repository is open source! You can see how the models were benchmarked, run the evaluation yourself, and even add your own models to the leaderboard. Check it out on [GitHub](https://github.com/roboflow/model-leaderboard)!
+更好的是，该存储库是开源的！您可以查看模型的基准测试方式，自己运行评估，甚至可以将自己的模型添加到排行榜中。请查看[GitHub](https://github.com/roboflow/model-leaderboard) 上的内容！
 
 ![Model Leaderboard Example](https://media.roboflow.com/model-leaderboard/model-leaderboard-example.png)
 
-## Conclusion
+## 结论
 
-In this guide, you've learned how to set up your environment, train or use pre-trained models, visualize predictions, and evaluate model performance with metrics like [mAP](https://supervision.roboflow.com/latest/metrics/mean_average_precision/), [F1 score](https://supervision.roboflow.com/latest/metrics/f1_score/), and got to know our Model Leaderboard.
+在本指南中，您学习了如何设置环境、训练或使用预训练模型、可视化预测并使用 [mAP](https://supervision.roboflow.com/latest/metrics/mean_average_precision/)、[F1 分数](https://supervision.roboflow.com/latest/metrics/f1_score/) 等指标评估模型性能，并了解了我们的模型排行榜。
 
-A condensed version of this guide is also available as a [Colab Notebook](https://colab.research.google.com/drive/1HoOY9pZoVwGiRMmLHtir0qT6Uj45w6Ps?usp=sharing).
+本指南的精简版本也可在[Colab Notebook](https://colab.research.google.com/drive/1HoOY9pZoVwGiRMmLHtir0qT6Uj45w6Ps?usp=sharing) 中找到。
 
-For more details, be sure to check out our [documentation](https://supervision.roboflow.com/latest/) and join our community discussions. If you find any issues, please let us know on [GitHub](https://github.com/roboflow/supervision/issues).
+有关更多详细信息，请务必查看我们的[文档](https://supervision.roboflow.com/latest/) 并加入我们的社区讨论。如果您发现任何问题，请在 [GitHub](https://github.com/roboflow/supervision/issues) 上告知我们。
 
-Best of luck with your benchmarking!
+祝您的基准测试一切顺利！

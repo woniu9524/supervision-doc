@@ -3,7 +3,7 @@ comments: true
 status: new
 ---
 
-# Polygons Utils
+# Polygons 工具
 
 <div class="md-typeset">
   <h2><a href="#supervision.detection.utils.polygons.filter_polygons_by_area">filter_polygons_by_area</a></h2>

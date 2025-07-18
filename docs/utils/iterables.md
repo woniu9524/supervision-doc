@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Iterables Utils
+# Iterables 工具
 
 <div class="md-typeset">
     <h2><a href="#supervision.utils.iterables.create_batches">create_batches</a></h2>

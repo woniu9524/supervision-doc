@@ -1,4 +1,4 @@
-# License
+# 许可证
 
 ```
 --8<-- "LICENSE.md"

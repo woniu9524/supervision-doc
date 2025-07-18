@@ -1,79 +1,79 @@
-# Contributing to Supervision 🛠️
+# 贡献 Supervision 🛠️
 
-Thank you for your interest in contributing to Supervision!
+感谢您对贡献 Supervision 感兴趣！
 
-We are actively improving this library to reduce the amount of work you need to do to solve common computer vision problems.
+我们正在积极改进这个库，以减少您在解决常见计算机视觉问题时所需的工作量。
 
-## Code of Conduct
+## 行为准则
 
-Please read and adhere to our [Code of Conduct](https://supervision.roboflow.com/latest/code_of_conduct/). This document outlines the expected behavior for all participants in our project.
+请阅读并遵守我们的 [行为准则](https://supervision.roboflow.com/latest/code_of_conduct/)。本文档概述了我们项目所有参与者应遵循的行为。
 
-## Table of Contents
+## 目录
 
-- [Contribution Guidelines](#contribution-guidelines)
-    - [Contributing Features](#contributing-features)
-- [How to Contribute Changes](#how-to-contribute-changes)
-- [Installation for Contributors](#installation-for-contributors)
-- [Code Style and Quality](#code-style-and-quality)
-    - [Pre-commit tool](#pre-commit-tool)
+- [贡献指南](#contribution-guidelines)
+    - [贡献新功能](#contributing-features)
+- [如何贡献更改](#how-to-contribute-changes)
+- [贡献者安装指南](#installation-for-contributors)
+- [代码风格与质量](#code-style-and-quality)
+    - [Pre-commit 工具](#pre-commit-tool)
     - [Docstrings](#docstrings)
-    - [Type checking](#type-checking)
-- [Documentation](#documentation)
+    - [类型检查](#type-checking)
+- [文档](#documentation)
 - [Cookbooks](#cookbooks)
-- [Tests](#tests)
-- [License](#license)
+- [测试](#tests)
+- [许可证](#license)
 
-## Contribution Guidelines
+## 贡献指南
 
-We welcome contributions to:
+我们欢迎以下方面的贡献：
 
-1. Add a new feature to the library (guidance below).
-2. Improve our documentation and add examples to make it clear how to leverage the supervision library.
-3. Report bugs and issues in the project.
-4. Submit a request for a new feature.
-5. Improve our test coverage.
+1. 为库添加新功能（下方提供指南）。
+2. 改进我们的文档并添加示例，以清晰地说明如何利用 supervision 库。
+3. 报告项目中的 bug 和问题。
+4. 提交新功能请求。
+5. 提高我们的测试覆盖率。
 
-### Contributing Features ✨
+### 贡献新功能 ✨
 
-Supervision is designed to provide generic utilities to solve problems. Thus, we focus on contributions that can have an impact on a wide range of projects.
+Supervision 旨在提供通用的实用工具来解决问题。因此，我们专注于可以对广泛项目产生影响的贡献。
 
-For example, counting objects that cross a line anywhere on an image is a common problem in computer vision, but counting objects that cross a line 75% of the way through is less useful.
+例如，在图像中的任何位置计算穿过一条线的物体数量是计算机视觉中的一个常见问题，但计算穿过距离图像 75% 处的线的物体数量则不太有用。
 
-Before you contribute a new feature, consider submitting an Issue to discuss the feature so the community can weigh in and assist.
+在贡献新功能之前，请考虑提交一个 Issue 来讨论该功能，以便社区能够发表意见并提供帮助。
 
-## How to Contribute Changes
+## 如何贡献更改
 
-First, fork this repository to your own GitHub account. Click "fork" in the top corner of the `supervision` repository to get started:
+首先，将此存储库 fork 到您自己的 GitHub 账户。点击 `supervision` 存储库右上角的“fork”按钮即可开始：
 
 ![Forking the repository](https://media.roboflow.com/fork.png)
 
 ![Creating a repository fork](https://media.roboflow.com/create_fork.png)
 
-Then, run `git clone` to download the project code to your computer.
+然后，使用 `git clone` 将项目代码下载到您的计算机。
 
-You should also set up `roboflow/supervision` as an "upstream" remote (that is, tell git that the reference Supervision repository was the source of your fork of it):
+您还应该将 `roboflow/supervision` 设置为“upstream”远程（即告诉 git Supervision 的参考存储库是您 fork 的来源）：
 
 ```bash
 git remote add upstream https://github.com/roboflow/supervision.git
 git fetch upstream
 ```
 
-Move to a new branch using the `git checkout` command:
+使用 `git checkout` 命令切换到新分支：
 
 ```bash
 git checkout -b <scope>/<your_branch_name> upstream/develop
 ```
 
-The name you choose for your branch should describe the change you want to make and start with an appropriate prefix:
+您为分支选择的名称应描述您要进行的更改，并以适当的前缀开头：
 
-- `feat/`: for new features (e.g., `feat/line-counter`)
-- `fix/`: for bug fixes (e.g., `fix/memory-leak`)
-- `docs/`: for documentation changes (e.g., `docs/update-readme`)
-- `chore/`: for routine tasks, maintenance, or tooling changes (e.g., `chore/update-dependencies`)
-- `test/`: for adding or modifying tests (e.g., `test/add-unit-tests`)
-- `refactor/`: for code refactoring (e.g., `refactor/simplify-algorithm`)
+- `feat/`: 用于新功能（例如 `feat/line-counter`）
+- `fix/`: 用于 bug 修复（例如 `fix/memory-leak`）
+- `docs/`: 用于文档更改（例如 `docs/update-readme`）
+- `chore/`: 用于例行任务、维护或工具更改（例如 `chore/update-dependencies`）
+- `test/`: 用于添加或修改测试（例如 `test/add-unit-tests`）
+- `refactor/`: 用于代码重构（例如 `refactor/simplify-algorithm`）
 
-Make any changes you want to the project code, then run the following commands to commit your changes:
+对项目代码进行您想要的任何更改，然后运行以下命令来提交您的更改：
 
 ```bash
 git add -A
@@ -81,150 +81,148 @@ git commit -m "feat: add line counter functionality"
 git push -u origin <your_branch_name>
 ```
 
-Use conventional commit messages to clearly describe your changes. The format is:
+使用约定俗成的提交消息来清晰描述您的更改。格式如下：
 
-<type>\[optional scope\]: <description>
+<type>\[可选范围\]: <description>
 
-Common types include:
+常见的类型包括：
 
-- feat: A new feature
-- fix: A bug fix
-- docs: Documentation only changes
-- style: Changes that do not affect the meaning of the code (white-space, formatting, etc)
-- refactor: A code change that neither fixes a bug nor adds a feature
-- perf: A code change that improves performance
-- test: Adding missing tests or correcting existing tests
-- chore: Changes to the build process or auxiliary tools and libraries
+- feat: 一个新功能
+- fix: 一个 bug 修复
+- docs: 仅文档更改
+- style: 不影响代码含义的更改 (空格，格式等)
+- refactor: 既不修复 bug 也不添加功能的代码更改
+- perf: 改进性能的代码更改
+- test: 添加缺失的测试或更正现有的测试
+- chore: 对构建过程或辅助工具和库进行的更改
 
-Then, go back to your fork of the `supervision` repository, click "Pull Requests", and click "New Pull Request".
+然后，返回到 `supervision` 存储库的 fork，点击“Pull Requests”，然后点击“New Pull Request”。
 
 ![Opening a pull request](https://media.roboflow.com/open_pr.png)
 
-Make sure the `base` branch is `develop` before submitting your PR.
+在提交 PR 之前，请确保 `base` 分支是 `develop`。
 
-On the next page, review your changes then click "Create pull request":
+在下一页，审阅您的更改，然后点击“Create pull request”：
 
 ![Configuring a pull request](https://media.roboflow.com/create_pr_submit.png)
 
-Next, write a description for your pull request, and click "Create pull request" again to submit it for review:
+接下来，为您的 Pull Request 撰写描述，然后再次点击“Create pull request”以提交审核：
 
 ![Submitting a pull request](https://media.roboflow.com/write_pr.png)
 
-When creating new functions, please ensure you have the following:
+在创建新函数时，请确保您具备以下条件：
 
-1. Docstrings for the function and all parameters.
-2. Unit tests for the function.
-3. Examples in the documentation for the function.
-4. Created an entry in our docs to autogenerate the documentation for the function.
-5. Please share a Google Colab with minimal code to test new feature or reproduce PR whenever it is possible. Please ensure that Google Colab can be accessed without any issue.
+1. 为函数和所有参数提供 docstrings。
+2. 为函数编写单元测试。
+3. 在文档中提供函数示例。
+4. 在我们的文档中创建条目以自动生成函数的文档。
+5. 尽可能提供一个 Google Colab，其中包含最少的代码来测试新功能或重现 PR。请确保 Google Colab 可以毫无问题地访问。
 
-When you submit your Pull Request, you will be asked to sign a Contributor License Agreement (CLA) by the `cla-assistant` GitHub bot. We can only respond to PRs from contributors who have signed the project CLA.
+当您提交 Pull Request 时，`cla-assistant` GitHub bot 会要求您签署贡献者许可协议 (CLA)。我们只能响应已签署项目 CLA 的贡献者的 PR。
 
-All pull requests will be reviewed by the maintainers of the project. We will provide feedback and ask for changes if necessary.
+所有 Pull Requests 都将由项目维护者进行审查。我们将提供反馈并在必要时要求进行更改。
 
-PRs must pass all tests and linting requirements before they can be merged.
+PR 必须通过所有测试和 linting 要求，然后才能合并。
 
-## Installation for Contributors
+## 贡献者安装指南
 
-Before starting your work on the project, set up your development environment:
+在开始项目工作之前，请设置您的开发环境：
 
-1. Clone your fork of the project (recommended to use shallow clone of develop branch):
+1. 克隆您 fork 的项目（建议浅克隆 develop 分支）：
 
-    **Option A: Recommended for most contributors (shallow clone of develop branch):**
+    **选项 A：大多数贡献者推荐（浅克隆 develop 分支）：**
 
     ```bash
     git clone --depth 1 -b develop https://github.com/YOUR_USERNAME/supervision.git
     cd supervision
     ```
 
-    Replace `YOUR_USERNAME` with your GitHub username.
+    将 `YOUR_USERNAME` 替换为您的 GitHub 用户名。
 
-    > Note: Using `--depth 1` creates a shallow clone with minimal history and `-b develop` ensures you start with the development branch. This significantly reduces download size while providing everything needed to contribute.
+    > 注意：使用 `--depth 1` 创建一个具有最少历史记录的浅克隆，`-b develop` 确保您从 development 分支开始。这大大减少了下载量，同时提供了贡献所需的一切。
 
-    **Option B: Full repository clone (if you need complete history):**
+    **选项 B：完整存储库克隆（如果您需要完整的历史记录）：**
 
     ```bash
     git clone https://github.com/YOUR_USERNAME/supervision.git
     cd supervision
     ```
 
-2. Create and activate a virtual environment:
+2. 创建并激活虚拟环境：
 
     ```bash
     python3 -m venv .venv
     source .venv/bin/activate
     ```
 
-3. Install `uv`:
+3. 安装 `uv`：
 
-    Follow the instructions on the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/).
+    请按照 [uv 安装页面](https://docs.astral.sh/uv/getting-started/installation/) 上的说明进行操作。
 
-4. Install project dependencies:
+4. 安装项目依赖项：
 
     ```bash
     uv pip install -r pyproject.toml --extra dev --extra docs --extra metrics
     ```
 
-5. Run pytest to verify the setup:
+5. 运行 pytest 来验证设置：
 
     ```bash
     uv run pytest
     ```
 
-## 🎨 Code Style and Quality
+## 🎨 代码风格与质量
 
-### Pre-commit tool
+### Pre-commit 工具
 
-This project uses the [pre-commit](https://pre-commit.com/) tool to maintain code quality and consistency. Before submitting a pull request or making any commits, it is important to run the pre-commit tool to ensure that your changes meet the project's guidelines.
+本项目使用 [pre-commit](https://pre-commit.com/) 工具来维护代码质量和一致性。在提交 Pull Request 或进行任何提交之前，运行 pre-commit 工具以确保您的更改符合项目指南非常重要。
 
-Furthermore, we have integrated a pre-commit GitHub Action into our workflow. This means that with every pull request opened, the pre-commit checks will be automatically enforced, streamlining the code review process and ensuring that all contributions adhere to our quality standards.
+此外，我们将 pre-commit GitHub Action 集成到了我们的工作流程中。这意味着每次打开 Pull Request 时，都会自动强制执行 pre-commit 检查，从而简化代码审查流程并确保所有贡献都符合我们的质量标准。
 
-To run the pre-commit tool, follow these steps:
+要运行 pre-commit 工具，请按照以下步骤操作：
 
-1. Install pre-commit by running the following command: `uv pip install -r pyproject.toml --extra dev`. It will not only install pre-commit but also install all the deps and dev-deps of project
+1. 运行以下命令安装 pre-commit：`uv pip install -r pyproject.toml --extra dev`。这将不仅安装 pre-commit，还将安装项目的所有依赖项和开发依赖项。
 
-2. Once pre-commit is installed, navigate to the project's root directory.
+2. 安装 pre-commit 后，导航到项目的根目录。
 
-3. Run the command `pre-commit run --all-files`. This will execute the pre-commit hooks configured for this project against the modified files. If any issues are found, the pre-commit tool will provide feedback on how to resolve them. Make the necessary changes and re-run the pre-commit command until all issues are resolved.
+3. 运行命令 `pre-commit run --all-files`。这将针对修改过的文件执行项目中配置的 pre-commit 钩子。如果发现任何问题，pre-commit 工具将提供有关如何解决这些问题的反馈。进行必要的更改并重新运行 pre-commit 命令，直到所有问题都得到解决。
 
-4. You can also install pre-commit as a git hook by executing `pre-commit install`. Every time you do a `git commit` pre-commit run automatically for you.
+4. 您也可以通过执行 `pre-commit install` 来将 pre-commit 安装为 git 钩子。每次执行 `git commit` 时，pre-commit 都会自动为您运行。
 
 ### Docstrings
 
-All new functions and classes in `supervision` should include docstrings. This is a prerequisite for any new functions and classes to be added to the library.
+`supervision` 中的所有新函数和类都应包含 docstrings。这是添加到库中的任何新函数和类的先决条件。
 
-`supervision` adheres to the [Google Python docstring style](https://google.github.io/styleguide/pyguide.html#383-functions-and-methods). Please refer to the style guide while writing docstrings for your contribution.
+`supervision` 遵循 [Google Python docstring 风格](https://google.github.io/styleguide/pyguide.html#383-functions-and-methods)。在为您的贡献编写 docstrings 时，请参考此风格指南。
 
-### Type checking
+### 类型检查
 
-So far, **there is no type checking with mypy**. See [issue](https://github.com/roboflow-ai/template-python/issues/4).
+到目前为止，**还没有使用 mypy 进行类型检查**。请参阅 [issue](https://github.com/roboflow-ai/template-python/issues/4)。
 
-## 📝 Documentation
+## 📝 文档
 
-The `supervision` documentation is stored in a folder called `docs`. The project documentation is built using `mkdocs`.
+`supervision` 的文档存储在名为 `docs` 的文件夹中。项目文档使用 `mkdocs` 构建。
 
-To run the documentation, install the project requirements with `uv pip install -r pyproject.toml --extra dev --extra docs`. Then, run `mkdocs serve` to start the documentation server.
+要运行文档，请使用 `uv pip install -r pyproject.toml --extra dev --extra docs` 命令安装项目需求。然后，运行 `mkdocs serve` 来启动文档服务器。
 
-You can learn more about mkdocs on the [mkdocs website](https://www.mkdocs.org/).
+您可以在 [mkdocs 网站](https://www.mkdocs.org/) 上了解更多关于 mkdocs 的信息。
 
 ## 🧑‍🍳 Cookbooks
 
-We are always looking for new examples and cookbooks to add to the `supervision`
-documentation. If you have a use case that you think would be helpful to others, please
-submit a PR with your example. Here are some guidelines for submitting a new example:
+我们一直在寻找新的示例和 cookbooks 来添加到 `supervision` 的文档中。如果您有一个对他人有帮助的用例，请提交一个 PR 来分享您的示例。以下是提交新示例的指南：
 
-- Create a new notebook in the [`docs/notebooks`](https://github.com/roboflow/supervision/tree/develop/docs/notebooks) folder.
-- Add a link to the new notebook in [`docs/theme/cookbooks.html`](https://github.com/roboflow/supervision/blob/develop/docs/theme/cookbooks.html). Make sure to add the path to the new notebook, as well as a title, labels, author and supervision version.
-- Use the [Count Objects Crossing the Line](https://supervision.roboflow.com/develop/notebooks/count-objects-crossing-the-line/) example as a template for your new example.
-- Freeze the version of `supervision` you are using.
-- Place an appropriate Open in Colab button at the top of the notebook. You can find an example of such a button in the aforementioned `Count Objects Crossing the Line` cookbook.
-- Notebook should be self-contained. If you rely on external data ( videos, images, etc.) or libraries, include download and installation commands in the notebook.
-- Annotate the code with appropriate comments, including links to the documentation describing each of the tools you have used.
+- 在 [`docs/notebooks`](https://github.com/roboflow/supervision/tree/develop/docs/notebooks) 文件夹中创建一个新的 notebook。
+- 在 [`docs/theme/cookbooks.html`](https://github.com/roboflow/supervision/blob/develop/docs/theme/cookbooks.html) 中添加指向新 notebook 的链接。确保添加新 notebook 的路径、标题、标签、作者和 supervision 版本。
+- 使用 [Count Objects Crossing the Line](https://supervision.roboflow.com/develop/notebooks/count-objects-crossing-the-line/) 示例作为新示例的模板。
+- 冻结您使用的 `supervision` 版本。
+- 在 notebook 的顶部放置一个适当的 Open in Colab 按钮。您可以在前面提到的 `Count Objects Crossing the Line` cookbook 中找到此类按钮的示例。
+- Notebook 应该是自包含的。如果您依赖于外部数据（视频、图像等）或库，请在 notebook 中包含下载和安装命令。
+- 使用适当的注释来注解代码，包括指向描述您使用的每个工具的文档的链接。
 
-## 🧪 Tests
+## 🧪 测试
 
-[`pytests`](https://docs.pytest.org/en/7.1.x/) is used to run our tests.
+我们使用 [`pytests`](https://docs.pytest.org/en/7.1.x/) 来运行我们的测试。
 
-## 📄 License
+## 📄 许可证
 
-By contributing, you agree that your contributions will be licensed under an [MIT license](https://github.com/roboflow/supervision/blob/develop/LICENSE.md).
+通过贡献，您同意您的贡献将根据 [MIT 许可证](https://github.com/roboflow/supervision/blob/develop/LICENSE.md) 进行许可。
