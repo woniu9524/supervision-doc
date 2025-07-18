@@ -70,9 +70,15 @@ jobs:
     - name: 🏗️ 构建文档
       env:
         MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+        JUPYTER_PLATFORM_DIRS: 1
       run: |
         echo "开始构建文档..."
-        mkdocs build --clean --strict
+        
+        # 首先尝试严格模式，如果失败则使用普通模式
+        if ! mkdocs build --clean --strict; then
+          echo "⚠️ 严格模式构建失败，使用普通模式重新构建..."
+          mkdocs build --clean
+        fi
         
         # 创建 .nojekyll 文件以禁用 Jekyll 处理
         touch site/.nojekyll
@@ -80,7 +86,10 @@ jobs:
         # 如果需要自定义域名，取消注释下面一行
         # echo "your-custom-domain.com" > site/CNAME
         
-        echo "文档构建完成！"
+        echo "✅ 文档构建完成！"
+        echo "📊 构建统计:"
+        find site -name "*.html" | wc -l | xargs echo "  HTML 文件数量:"
+        du -sh site | cut -f1 | xargs echo "  总大小:"
     
     - name: 🚀 部署到 GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

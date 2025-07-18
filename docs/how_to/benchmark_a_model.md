@@ -11,16 +11,16 @@ status: new
 
 本指南将展示一种使用 `supervision` 基准测试结果的便捷方法。它将涵盖：
 
-1. [加载数据集](#loading-a-dataset)
-2. [加载模型](#loading-a-model)
-3. [基准测试基础](#benchmarking-basics)
-4. [运行模型](#running-a-model)
-5. [重新映射类别](#remapping-classes)
-6. [可视化基准测试](#visual-benchmarking)
-7. [基准测试指标](#benchmarking-metrics)
-8. [平均精度均值 (mAP)](#mean-average-precision-map)
-9. [F1 分数](#f1-score)
-10. [加分项：模型排行榜](#model-leaderboard)
+1. [加载数据集](#加载数据集)
+2. [加载模型](#加载模型)
+3. [基准测试基础](#基准测试基础)
+4. [运行模型](#运行模型)
+5. [重新映射类别](#重新映射类别)
+6. [可视化预测](#可视化预测)
+7. [基准测试指标](#基准测试指标)
+8. [平均精度均值 (mAP)](#平均精度均值-map)
+9. [F1 分数](#f1-分数)
+10. [模型排行榜](#模型排行榜)
 
 本指南将使用一个实例分割模型，但它也适用于目标检测、实例分割和定向边界框模型（OBB）。
 
