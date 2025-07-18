@@ -9,7 +9,7 @@ on:
 
 # 设置GITHUB_TOKEN权限以允许部署到GitHub Pages
 permissions:
-  contents: read
+  contents: write  # 推送到gh-pages分支需要写权限
   pages: write
   id-token: write
 
@@ -100,4 +100,12 @@ jobs:
         force_orphan: true
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: '部署中文文档 ${{ github.sha }}' 
+        commit_message: '部署中文文档 ${{ github.sha }}'
+
+    # 备用部署方法（如果上面的方法仍有权限问题，可以尝试这个）
+    # - name: 🚀 备用部署到 GitHub Pages
+    #   uses: actions/deploy-pages@v3
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     artifact_name: github-pages
+    #   if: failure() 
